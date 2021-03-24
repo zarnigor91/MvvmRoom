@@ -2,6 +2,8 @@ package com.example.newtest.app.di.module
 
 import dagger.Module
 import dagger.Provides
+import uz.zn.taskalifteach.data.provider.RepositoryProvider
+import uz.zn.taskalifteach.data.repository.TaskRepository
 import javax.inject.Singleton
 
 @Module(includes = [ApplicationDaggerModuleRepository.Provider::class])
@@ -12,9 +14,9 @@ object ApplicationDaggerModuleRepository {
          @JvmStatic
         @Provides
         @Singleton
-        fun articleRepository(
-            repositoryProvider: IRepositoryProvider
-        ): INewsRepository = repositoryProvider.newsRepository
+        fun TaskRepository(
+            repositoryProvider: RepositoryProvider
+        ): TaskRepository = repositoryProvider.taskRepository
 
     }
 }

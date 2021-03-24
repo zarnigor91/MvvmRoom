@@ -1,4 +1,4 @@
-package com.example.alifteachtask.app
+package uz.zn.taskalifteach.app.application
 
 import android.app.Application
 import android.content.Context
