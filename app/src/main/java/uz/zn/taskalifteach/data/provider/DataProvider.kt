@@ -13,7 +13,7 @@ class DataProvider(context: Context) {
             dataSourceProvider.dataBaseProvider
 
         return@lazy RepositoryProviderImpl(
-            articleEntityDao = databaseProvider.articleEntityDao
+            taskDao = databaseProvider.taskDao
         )
     }
 }

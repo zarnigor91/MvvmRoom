@@ -3,11 +3,13 @@ package uz.zn.taskalifteach.app.global
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.newtest.app.di.fragment.ProviderFragmentFactory
-import com.example.newtest.app.di.viewmodel.ProviderViewModelFactory
+
 import me.vponomarenko.injectionmanager.IHasComponent
 import me.vponomarenko.injectionmanager.x.XInjectionManager
+import uz.zn.taskalifteach.app.application.di.fragment.ProviderFragmentFactory
+import uz.zn.taskalifteach.app.application.di.viewmodel.ProviderViewModelFactory
 import uz.zn.taskalifteach.app.global.di.GlobalDaggerComponent
+import uz.zn.taskalifteach.databinding.FragmentDashboardRootBinding
 import javax.inject.Inject
 
 class GlobalActivity : AppCompatActivity(), IHasComponent<GlobalDaggerComponent> {
@@ -21,7 +23,7 @@ class GlobalActivity : AppCompatActivity(), IHasComponent<GlobalDaggerComponent>
 
     private val globalViewModel: GlobalViewModel by viewModels { viewModelFactory }
 
-    private val binding by lazy { ActivityGlobalBinding.inflate(layoutInflater) }
+    private val binding by lazy { FragmentDashboardRootBinding.inflate(layoutInflater) }
 
     override fun getComponent(): GlobalDaggerComponent =
         GlobalDaggerComponent.create(XInjectionManager.findComponent())

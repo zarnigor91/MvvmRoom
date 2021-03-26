@@ -1,12 +1,12 @@
-package com.example.alifteachtask.app.di.component
+package uz.zn.taskalifteach.app.application.di.component
 
 
 import android.content.Context
 import uz.zn.taskalifteach.app.application.Application
-import com.example.newtest.app.di.module.ApplicationDaggerModule
-import com.example.newtest.app.di.module.ApplicationDaggerModuleRepository
 import dagger.BindsInstance
 import dagger.Component
+import uz.zn.taskalifteach.app.application.di.module.ApplicationDaggerModule
+import uz.zn.taskalifteach.app.application.di.module.ApplicationDaggerModuleRepository
 import uz.zn.taskalifteach.data.provider.RepositoryProvider
 import javax.inject.Singleton
 

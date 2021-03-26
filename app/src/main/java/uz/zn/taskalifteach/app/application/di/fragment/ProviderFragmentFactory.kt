@@ -1,4 +1,4 @@
-package com.example.newtest.app.di.fragment
+package uz.zn.taskalifteach.app.application.di.fragment
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory

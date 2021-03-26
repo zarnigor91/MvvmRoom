@@ -1,22 +1,36 @@
 package uz.zn.taskalifteach.data.repository
 
-import com.example.alifteachtask.data.datasourse.TaskDao
 import com.example.alifteachtask.data.model.TaskEntity
 import kotlinx.coroutines.flow.Flow
-import uz.zn.taskalifteach.data.model.Tasks
+import kotlinx.coroutines.flow.flow
+import uz.zn.taskalifteach.data.datasourse.TaskDao
 
 class TaskRepositoryImpl(
     private val taskDao: TaskDao
 ) : TaskRepository {
-    override fun getAllTask(): Flow<Tasks> {
-        TODO("Not yet implemented")
+    override fun getAllTask(): Flow<List<TaskEntity>>{
+          return taskDao.selectAllTask()
     }
 
-    override fun getTask(): Flow<TaskEntity> {
-        TODO("Not yet implemented")
+    override fun getCompletedTask(): Flow<List<TaskEntity>> {
+        return taskDao.selectAllTask()
     }
 
-    override fun taskCreation(): Flow<TaskEntity> {
-        TODO("Not yet implemented")
+    override fun getUndoneTask(): Flow<List<TaskEntity>> {
+        return taskDao.selectAllTask()
     }
+
+    override fun taskCreation(taks: TaskEntity): Flow<Long> {
+         return  flow{emit(taskDao.insert(taks))}
+    }
+
+    override fun taskDelete(taskEntity: TaskEntity): Flow<Long> {
+          return flow{emit(taskDao.delete(taskEntity))}
+    }
+
+    override fun taskEdit(id: Long, name: String): Flow<Long> {
+        return flow{emit(taskDao.updateTask(id,name))}
+    }
+
+
 }

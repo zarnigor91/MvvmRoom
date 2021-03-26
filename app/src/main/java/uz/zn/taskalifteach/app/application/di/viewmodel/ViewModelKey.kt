@@ -1,4 +1,4 @@
-package com.example.newtest.app.di.viewmodel
+package uz.zn.taskalifteach.app.application.di.viewmodel
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

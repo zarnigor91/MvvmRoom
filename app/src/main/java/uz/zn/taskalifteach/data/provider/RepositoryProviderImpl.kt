@@ -4,7 +4,7 @@ import com.example.alifteachtask.data.datasourse.TaskDao
 import uz.zn.taskalifteach.data.repository.TaskRepository
 import uz.zn.taskalifteach.data.repository.TaskRepositoryImpl
 
-class RepositoryProviderImpl(
+internal class RepositoryProviderImpl(
     private val taskDao: TaskDao,
 
 ) : RepositoryProvider{

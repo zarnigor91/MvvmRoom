@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_global"
+    app:startDestination="@id/mainRootFragment">
+
+    <fragment
+        android:id="@+id/mainRootFragment"
+        android:name="uz.zn.taskalifteach.app.feature.MainRootFragment"
+        android:label="MainRootFragment"
+        tools:layout="@layout/fragment_dashboard_root"
+        >
+        <action
+            android:id="@+id/action_mainRootFragment_to_creationFragment"
+            app:destination="@id/creationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/creationFragment"
+        android:name="uz.zn.taskalifteach.app.feature.creation.CreationFragment"
+        android:label="CreationFragment" />
+</navigation>

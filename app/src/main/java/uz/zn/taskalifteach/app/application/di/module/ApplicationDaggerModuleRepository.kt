@@ -1,4 +1,4 @@
-package com.example.newtest.app.di.module
+package uz.zn.taskalifteach.app.application.di.module
 
 import dagger.Module
 import dagger.Provides
@@ -11,7 +11,7 @@ object ApplicationDaggerModuleRepository {
 
     @Module
     object Provider {
-         @JvmStatic
+        @JvmStatic
         @Provides
         @Singleton
         fun TaskRepository(

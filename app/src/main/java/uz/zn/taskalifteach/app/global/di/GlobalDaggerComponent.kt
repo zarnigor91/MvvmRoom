@@ -1,7 +1,7 @@
 package uz.zn.taskalifteach.app.global.di
 
-import com.example.alifteachtask.app.di.component.IApplicationDaggerComponent
 import dagger.Component
+import uz.zn.taskalifteach.app.application.di.component.IApplicationDaggerComponent
 import uz.zn.taskalifteach.app.global.GlobalActivity
 import uz.zn.taskalifteach.data.provider.RepositoryProvider
 
@@ -15,19 +15,16 @@ import uz.zn.taskalifteach.data.provider.RepositoryProvider
 )
 interface GlobalDaggerComponent : RepositoryProvider {
 
-    fun globalNavController(): GlobalNavController
-
-    fun navControllerHolder(): NavControllerHolder<GlobalNavController>
 
     fun inject(activity: GlobalActivity)
 
     @Component.Factory
     interface Factory {
-        fun create(component: ApplicationDaggerComponent): GlobalDaggerComponent
+        fun create(component: IApplicationDaggerComponent): GlobalDaggerComponent
     }
 
     companion object {
-        fun create(component: ApplicationDaggerComponent): GlobalDaggerComponent =
+        fun create(component: IApplicationDaggerComponent): GlobalDaggerComponent =
             DaggerGlobalDaggerComponent
                 .factory()
                 .create(component)
