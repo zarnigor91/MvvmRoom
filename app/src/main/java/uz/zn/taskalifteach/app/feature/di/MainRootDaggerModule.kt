@@ -9,6 +9,11 @@ import uz.zn.taskalifteach.app.application.di.fragment.FragmentKey
 import uz.zn.taskalifteach.app.application.di.viewmodel.ViewModelKey
 import uz.zn.taskalifteach.app.feature.MainRootFragment
 import uz.zn.taskalifteach.app.feature.MainRootViewModel
+import uz.zn.taskalifteach.app.feature.completed.di.CompletedDaggerModule
+import uz.zn.taskalifteach.app.feature.creation.di.CreationDaggerModule
+import uz.zn.taskalifteach.app.feature.dashboard.di.DashboardDaggerModule
+import uz.zn.taskalifteach.app.feature.edit.di.EditDaggerModule
+import uz.zn.taskalifteach.app.feature.undone.di.UndoneDaggerModule
 
 @Module(
     includes = [
@@ -34,8 +39,10 @@ object MainRootDaggerModule {
     @Module(
         includes = [
             DashboardDaggerModule::class,
-            ReadLaterNewsDaggerModule::class,
-            RecommendedNewsDaggerModule::class,
+            EditDaggerModule::class,
+            CompletedDaggerModule::class,
+            CreationDaggerModule::class,
+            UndoneDaggerModule::class
         ]
     )
     object FeaturesDaggerModules

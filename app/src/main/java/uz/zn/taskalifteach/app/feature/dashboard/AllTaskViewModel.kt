@@ -1,4 +1,7 @@
 package uz.zn.taskalifteach.app.feature.dashboard
 
-class AllTaskViewModel {
+import androidx.lifecycle.ViewModel
+import javax.inject.Inject
+
+class AllTaskViewModel @Inject constructor() :ViewModel() {
 }

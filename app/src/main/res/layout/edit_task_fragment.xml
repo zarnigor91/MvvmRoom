@@ -1,6 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintTextColor="#7858BA"
+        app:endIconMode="password_toggle"
+        android:hint="name"
+        app:endIconTint="@color/design_default_color_primary_dark"
+        android:textColorHint="#7858BA"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#7858BA"
+        app:hintTextAppearance="@style/MyHintStyle"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:drawablePadding="10dp"
+            android:imeOptions="actionDone"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintTextColor="#7858BA"
+        app:endIconMode="password_toggle"
+        android:hint="date"
+        app:layout_constraintTop_toBottomOf="@+id/tl_name"
+        app:endIconTint="@color/cardview_dark_background"
+        android:textColorHint="#7858BA"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#7858BA"
+        android:layout_marginTop="20dp"
+        app:hintTextAppearance="@style/MyHintStyle"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/cardview_shadow_start_color"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:drawablePadding="10dp"
+            android:imeOptions="actionDone"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

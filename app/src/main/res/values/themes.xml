@@ -20,4 +20,14 @@
         <item name="colorControlNormal">#3966FB</item>
         <item name="android:textSize">10sp</item>
     </style>
+
+
+    <style name="MyHintStyle" parent="@android:style/TextAppearance">
+        <item name="android:textColorHint">#7858BA</item>
+        <item name="android:textSize">20dp</item>
+        <item name="colorAccent">#7858BA</item>
+        <item name="colorControlNormal">#7858BA</item>
+        <item name="colorControlActivated">#7858BA</item>
+
+    </style>
 </resources>

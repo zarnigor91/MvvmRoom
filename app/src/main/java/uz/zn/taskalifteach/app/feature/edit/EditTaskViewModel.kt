@@ -1,4 +1,6 @@
 package uz.zn.taskalifteach.app.feature.edit
 
-class EditTaskViewModel {
-}
+import androidx.lifecycle.ViewModel
+import javax.inject.Inject
+
+class EditTaskViewModel @Inject constructor(): ViewModel()
