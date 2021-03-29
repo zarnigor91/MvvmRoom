@@ -1,10 +1,9 @@
-package com.example.alifteachtask.data.datasourse
+package uz.zn.taskalifteach.data.datasourse
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
 import com.example.alifteachtask.data.model.TaskEntity
 
 @Database(entities = [TaskEntity::class], version = 1, exportSchema = false)

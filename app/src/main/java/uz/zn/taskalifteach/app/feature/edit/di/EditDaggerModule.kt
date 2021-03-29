@@ -19,13 +19,13 @@ internal object EditDaggerModule{
     interface Binder {
         @Binds
         @IntoMap
-        @FragmentKey(MainRootFragment::class)
-        fun mainScreenFragment(fragment: MainRootFragment): Fragment
+        @FragmentKey(EditTaskFragment::class)
+        fun editTaskFragment(fragment: EditTaskFragment): Fragment
 
         @Binds
         @IntoMap
         @ViewModelKey(EditTaskViewModel::class)
-        fun mainScreenViewModel(viewModel: EditTaskViewModel): ViewModel
+        fun editTaskViewModel(viewModel: EditTaskViewModel): ViewModel
     }
 
 }

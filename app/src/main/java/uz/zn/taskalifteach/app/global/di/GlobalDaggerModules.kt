@@ -1,6 +1,7 @@
 package uz.zn.taskalifteach.app.global.di
 
 import dagger.Module
+import uz.zn.taskalifteach.app.feature.di.MainRootDaggerModule
 
 @Module(
     includes = [
@@ -14,6 +15,7 @@ import dagger.Module
 //        PasswordDaggerModule::class,
 //        LoginDaggerModule::class,
 //        ProPasswordDaggerModule::class
+        MainRootDaggerModule::class
     ]
 )
 object GlobalDaggerModules

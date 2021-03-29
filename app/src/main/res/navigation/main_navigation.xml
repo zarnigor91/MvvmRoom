@@ -6,7 +6,7 @@
     app:startDestination="@id/allTaskFragment2">
     <fragment
         android:id="@+id/allTaskFragment2"
-        android:name="uz.zn.taskalifteach.app.feature.dashboard.AllTaskFragment"
+        android:name="uz.zn.taskalifteach.app.feature.alltask.AllTaskFragment"
         android:label="AllTaskFragment"
         tools:layout="@layout/all_task_fragment"
         />
