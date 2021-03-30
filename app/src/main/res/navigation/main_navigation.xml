@@ -3,23 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/allTaskFragment2">
+    app:startDestination="@id/main_all_tasks_fragment">
     <fragment
-        android:id="@+id/allTaskFragment2"
-        android:name="uz.zn.taskalifteach.app.feature.alltask.AllTaskFragment"
+        android:id="@+id/main_all_tasks_fragment"
+        android:name="uz.zn.taskalifteach.app.feature.feature.alltask.AllTaskFragment"
         android:label="AllTaskFragment"
-        tools:layout="@layout/all_task_fragment"
-        />
+        tools:layout="@layout/fragment_all_task" />
     <fragment
-        android:id="@+id/undoneFragment"
-        android:name="uz.zn.taskalifteach.app.feature.undone.UndoneFragment"
-        android:label="UndoneFragment"
-        tools:layout="@layout/uncompleted_fragment"
-        />
-    <fragment
-        android:id="@+id/completedFragment"
-        android:name="uz.zn.taskalifteach.app.feature.completed.CompletedFragment"
+        android:id="@+id/main_completed_tasks_fragment"
+        android:name="uz.zn.taskalifteach.app.feature.feature.completed.CompletedFragment"
         android:label="CompletedFragment"
-        tools:layout="@layout/completed_fragment"
-        />
+        tools:layout="@layout/fragment_completed" />
+    <fragment
+        android:id="@+id/main_uncompleted_tasks_fragment"
+        android:name="uz.zn.taskalifteach.app.feature.feature.undone.UndoneFragment"
+        android:label="UndoneFragment"
+        tools:layout="@layout/fragment_uncompleted" />
 </navigation>

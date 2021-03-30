@@ -1,4 +1,4 @@
-package com.example.alifteachtask.app.feature
+package uz.zn.taskalifteach.app.feature
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,19 +6,16 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
-
 import com.example.alifteachtask.data.model.TaskEntity
-import uz.zn.taskalifteach.databinding.TaskItemBinding
-
-
+import uz.zn.taskalifteach.databinding.ViewHolderTaskItemBinding
 
 class TaskAdapter(context: Context) :
-        RecyclerView.Adapter<TaskAdapter.ViewHolder>(), Filterable{
+    RecyclerView.Adapter<TaskAdapter.ViewHolder>(), Filterable {
     private var myList: MutableList<TaskEntity> = ArrayList()
     private val inflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-       return ViewHolder(TaskItemBinding.inflate(LayoutInflater.from(parent.context)))
+        return ViewHolder(ViewHolderTaskItemBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     override fun getItemCount(): Int {
@@ -36,13 +33,8 @@ class TaskAdapter(context: Context) :
         this.notifyDataSetChanged()
     }
 
-    fun setProvidedPrice(newPrice: Int) {
-//        price = newPrice;
-        notifyDataSetChanged()
-    }
-
-    class ViewHolder(private val binding: TaskItemBinding) :
-            RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ViewHolderTaskItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         private var selectSubject: TaskEntity? = null
 
         fun onBind(newsItem: TaskEntity) {
@@ -50,13 +42,11 @@ class TaskAdapter(context: Context) :
 //
 //            itemView.apply {
 //                setOnClickListener { action.invoke(selectSubject!!) }
-
-
-                binding.tvTitle.text = newsItem.name
-                binding.tvCaption.text =newsItem.data
-            }
-
+            binding.tvTitle.text = newsItem.name
+            binding.tvCaption.text = newsItem.data
         }
+
+    }
 
     override fun getFilter(): Filter {
         return object : Filter() {
@@ -67,7 +57,9 @@ class TaskAdapter(context: Context) :
                 } else {
                     val resultList = ArrayList<TaskEntity>()
                     for (row in myList) {
-                        if (row.name!!.toLowerCase().contains(constraint.toString().toLowerCase())) {
+                        if (row.name!!.toLowerCase()
+                                .contains(constraint.toString().toLowerCase())
+                        ) {
                             resultList.add(row)
                         }
                     }

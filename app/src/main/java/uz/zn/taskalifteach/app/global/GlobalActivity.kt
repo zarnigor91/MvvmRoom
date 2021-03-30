@@ -9,7 +9,7 @@ import me.vponomarenko.injectionmanager.x.XInjectionManager
 import uz.zn.taskalifteach.app.application.di.fragment.ProviderFragmentFactory
 import uz.zn.taskalifteach.app.application.di.viewmodel.ProviderViewModelFactory
 import uz.zn.taskalifteach.app.global.di.GlobalDaggerComponent
-import uz.zn.taskalifteach.databinding.FragmentDashboardRootBinding
+import uz.zn.taskalifteach.databinding.ActivityGlobalBinding
 import javax.inject.Inject
 
 class GlobalActivity : AppCompatActivity(), IHasComponent<GlobalDaggerComponent> {
@@ -19,11 +19,12 @@ class GlobalActivity : AppCompatActivity(), IHasComponent<GlobalDaggerComponent>
         supportFragmentManager.fragmentFactory = fragmentFactory
     }
 
-    @Inject lateinit var viewModelFactory: ProviderViewModelFactory
+    @Inject
+    lateinit var viewModelFactory: ProviderViewModelFactory
 
     private val globalViewModel: GlobalViewModel by viewModels { viewModelFactory }
 
-    private val binding by lazy { FragmentDashboardRootBinding.inflate(layoutInflater) }
+    private val binding by lazy { ActivityGlobalBinding.inflate(layoutInflater) }
 
     override fun getComponent(): GlobalDaggerComponent =
         GlobalDaggerComponent.create(XInjectionManager.findComponent())

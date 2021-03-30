@@ -9,11 +9,11 @@ import uz.zn.taskalifteach.app.application.di.fragment.FragmentKey
 import uz.zn.taskalifteach.app.application.di.viewmodel.ViewModelKey
 import uz.zn.taskalifteach.app.feature.MainRootFragment
 import uz.zn.taskalifteach.app.feature.MainRootViewModel
-import uz.zn.taskalifteach.app.feature.alltask.di.AllTaskDaggerModule
-import uz.zn.taskalifteach.app.feature.completed.di.CompletedDaggerModule
-import uz.zn.taskalifteach.app.feature.creation.di.CreationDaggerModule
-import uz.zn.taskalifteach.app.feature.edit.di.EditDaggerModule
-import uz.zn.taskalifteach.app.feature.undone.di.UndoneDaggerModule
+import uz.zn.taskalifteach.app.feature.feature.alltask.di.AllTaskDaggerModule
+import uz.zn.taskalifteach.app.feature.feature.completed.di.CompletedDaggerModule
+import uz.zn.taskalifteach.app.feature.feature.creation.di.CreationDaggerModule
+import uz.zn.taskalifteach.app.feature.feature.edit.di.EditDaggerModule
+import uz.zn.taskalifteach.app.feature.feature.undone.di.UndoneDaggerModule
 
 @Module(
     includes = [

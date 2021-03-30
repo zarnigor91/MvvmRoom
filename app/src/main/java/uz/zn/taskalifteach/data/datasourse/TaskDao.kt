@@ -8,16 +8,14 @@ import kotlinx.coroutines.flow.Flow
 interface TaskDao {
 
     @Query("SELECT * from tasks")
-    suspend fun selectAllTask(): MutableList<TaskEntity>
-
+    fun selectAllTask(): Flow<List<TaskEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(entity: TaskEntity): Long
-
+    fun insert(entity: TaskEntity): Long
 
     @Delete
-    suspend fun delete(entity: TaskEntity): Long
+    fun delete(entity: TaskEntity)
 
-    @Query("UPDATE tasks SET name = name WHERE id = id")
-     suspend fun updateTask(id: Long, name: String) : Long
+    @Query("UPDATE tasks SET name = :name WHERE id = :id")
+    fun updateTask(id: Long, name: String): Int
 }

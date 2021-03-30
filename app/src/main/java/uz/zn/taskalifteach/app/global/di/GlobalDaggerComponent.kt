@@ -8,10 +8,7 @@ import uz.zn.taskalifteach.data.provider.RepositoryProvider
 @GlobalScope
 @Component(
     dependencies = [IApplicationDaggerComponent::class],
-    modules = [
-        GlobalDaggerModule::class,
-        GlobalDaggerModules::class
-    ]
+    modules = [GlobalDaggerModule::class, GlobalDaggerModules::class]
 )
 interface GlobalDaggerComponent : RepositoryProvider {
 

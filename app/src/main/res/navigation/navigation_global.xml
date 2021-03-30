@@ -9,14 +9,13 @@
         android:id="@+id/mainRootFragment"
         android:name="uz.zn.taskalifteach.app.feature.MainRootFragment"
         android:label="MainRootFragment"
-        tools:layout="@layout/fragment_dashboard_root"
-        >
+        tools:layout="@layout/fragment_main_root">
         <action
             android:id="@+id/action_mainRootFragment_to_creationFragment"
             app:destination="@id/creationFragment" />
     </fragment>
     <fragment
         android:id="@+id/creationFragment"
-        android:name="uz.zn.taskalifteach.app.feature.creation.CreationFragment"
+        android:name="uz.zn.taskalifteach.app.feature.feature.creation.CreationFragment"
         android:label="CreationFragment" />
 </navigation>
