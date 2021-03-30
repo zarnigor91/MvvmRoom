@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 interface TaskDao {
 
     @Query("SELECT * from tasks")
-    fun selectAllTask(): Flow<MutableList<TaskEntity>>
+    suspend fun selectAllTask(): MutableList<TaskEntity>
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

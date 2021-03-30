@@ -9,15 +9,15 @@ class TaskRepositoryImpl(
     private val taskDao: TaskDao
 ) : TaskRepository {
     override fun getAllTask(): Flow<List<TaskEntity>>{
-          return taskDao.selectAllTask()
+          return flow{emit(taskDao.selectAllTask())}
     }
 
     override fun getCompletedTask(): Flow<List<TaskEntity>> {
-        return taskDao.selectAllTask()
+        return flow{emit(taskDao.selectAllTask())}
     }
 
     override fun getUndoneTask(): Flow<List<TaskEntity>> {
-        return taskDao.selectAllTask()
+        return flow{emit(taskDao.selectAllTask())}
     }
 
     override fun taskCreation(taks: TaskEntity): Flow<Long> {
