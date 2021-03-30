@@ -3,6 +3,7 @@ package uz.zn.taskalifteach.app.feature.feature.creation
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import uz.zn.taskalifteach.R
@@ -25,9 +26,13 @@ class CreationFragment @Inject constructor(
         binding = FragmentTaskCreationBinding.bind(view)
 
 
-        viewModel.setNameTask(binding.etName.toString())
-        viewModel.setDateTask(binding.etDate.toString())
-        viewModel.setStatusTask(true)
+         observeCardList()
+        binding.btAdd.setOnClickListener {
+            viewModel.setNameTask(binding.etName.text.toString())
+            viewModel.setDateTask(binding.etDate.text.toString())
+            viewModel.setStatusTask(true)
+            viewModel.insertTask()
+        }
 
     }
 
@@ -35,12 +40,12 @@ class CreationFragment @Inject constructor(
         viewModel.addTaskLiveData.observe(viewLifecycleOwner) { resource ->
             Log.d("card", "" + resource)
             when (resource) {
-                AllTaskResource.Loading -> {
+             CreationResource.Loading -> {
                 }
-                is AllTaskResource.Success -> {
-
+                is CreationResource.Success -> {
+                        Toast.makeText(requireContext(), "add to database", Toast.LENGTH_SHORT).show()
                 }
-                is AllTaskResource.Failure -> {
+                is CreationResource.Failure -> {
                 }
             }
         }

@@ -7,6 +7,7 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alifteachtask.data.model.TaskEntity
+import uz.zn.taskalifteach.R
 import uz.zn.taskalifteach.databinding.ViewHolderTaskItemBinding
 
 class TaskAdapter(context: Context) :
@@ -26,7 +27,6 @@ class TaskAdapter(context: Context) :
         holder.onBind(myList[position])
     }
 
-
     fun updateTask(newList: List<TaskEntity>) {
         myList.clear()
         myList.addAll(newList)
@@ -42,8 +42,15 @@ class TaskAdapter(context: Context) :
 //
 //            itemView.apply {
 //                setOnClickListener { action.invoke(selectSubject!!) }
-            binding.tvTitle.text = newsItem.name
-            binding.tvCaption.text = newsItem.data
+            binding.tvName.text = newsItem.name
+            binding.tvDate.text = newsItem.data
+            if (newsItem.status==true){
+                 binding.imStatus.setImageResource(R.drawable.ic_switch_on)
+            }
+            else{
+                binding.imStatus.setImageResource(R.drawable.ic_switch_off)
+            }
+
         }
 
     }

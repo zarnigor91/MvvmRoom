@@ -1,6 +1,6 @@
 package uz.zn.taskalifteach.doimain
 
-import android.util.Log
+
 import com.example.alifteachtask.data.model.TaskEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -12,9 +12,18 @@ import javax.inject.Inject
 class TaskInteractor @Inject  constructor(
     private val taskRepository: TaskRepository
 ) {
-private var nameTask: String? = null
-    private var dateTask: String? = null
+private var nameTask: String? = ""
+    private var dateTask: String? = ""
     private var setStatusTask: Boolean? = false
+
+    fun getNameTask():String =
+        checkNotNull(nameTask)
+
+    fun getDateTask():String =
+        checkNotNull(dateTask)
+
+    fun getStatusTask():Boolean =
+        checkNotNull(setStatusTask)
 
     fun setNameTask(value: String) {
         nameTask = value
@@ -43,8 +52,8 @@ private var nameTask: String? = null
             .flowOn(Dispatchers.IO)
     }
 
-    fun addTasks(): Flow<Result<List<TaskEntity>>>{
-        return taskRepository.getAllTask().mapToFlowResult()
+    fun addTasks(): Flow<Result<Long>>{
+        return taskRepository.taskCreation(TaskEntity(null,getNameTask(),getDateTask(),getStatusTask())).mapToFlowResult()
             .flowOn(Dispatchers.IO)
     }
 

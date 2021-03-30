@@ -7,7 +7,7 @@ sealed class CreationResource {
     object Loading : CreationResource()
 
     data class Success(
-        val values: List<TaskEntity>
+        val values: Long
     ) : CreationResource()
 
     data class Failure(val throwable: Throwable) : CreationResource()

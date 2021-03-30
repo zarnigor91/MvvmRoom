@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import uz.zn.taskalifteach.R
 import uz.zn.taskalifteach.app.application.di.viewmodel.ProviderViewModelFactory
@@ -38,7 +39,7 @@ class MainRootFragment @Inject constructor(
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         return when (item?.itemId) {
             R.id.action_add -> {
-                // TODO: 3/30/21 add oynaga utish kerak
+                findNavController().navigate(R.id.action_mainRootFragment_to_creationFragment)
                 true
             }
             else -> false

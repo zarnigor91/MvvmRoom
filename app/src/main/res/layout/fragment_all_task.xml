@@ -9,6 +9,8 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/view_holder_task_item" />
+        tools:listitem="@layout/view_holder_task_item"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        />
 
 </LinearLayout>

@@ -22,11 +22,11 @@ class AllTaskFragment @Inject constructor(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentAllTaskBinding.bind(view)
-        taskAdapter = TaskAdapter(requireContext())
 
+        taskAdapter = TaskAdapter(requireContext())
+        binding.recyclerView.adapter = taskAdapter
         observeCardList()
         viewModel.getAllTaskList()
-
     }
 
     private fun observeCardList() {

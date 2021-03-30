@@ -10,7 +10,7 @@ interface TaskDao {
     @Query("SELECT * from tasks")
     fun selectAllTask(): Flow<List<TaskEntity>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(entity: TaskEntity): Long
 
     @Delete

@@ -13,8 +13,8 @@ import javax.inject.Inject
 class CreationViewModel @Inject constructor(
     private val taskInteractor: TaskInteractor
 ) : ViewModel(){
-    private val _addTaskLiveData = MutableLiveData<AllTaskResource>()
-    val addTaskLiveData: LiveData<AllTaskResource> = _addTaskLiveData
+    private val _addTaskLiveData = MutableLiveData<CreationResource>()
+    val addTaskLiveData: LiveData<CreationResource> = _addTaskLiveData
 
     fun setNameTask(name: String) =
         taskInteractor.setNameTask(name)
@@ -27,11 +27,11 @@ class CreationViewModel @Inject constructor(
 
     fun  insertTask() {
         viewModelScope.launch {
-            taskInteractor.getAlltasks()
+            taskInteractor.addTasks()
                 .launchWithState(
-                    onStart = { _addTaskLiveData.postValue(AllTaskResource.Loading)},
-                    onSuccess = {_addTaskLiveData.postValue(AllTaskResource.Success(it))},
-                    onFailure = {_addTaskLiveData.postValue(AllTaskResource.Failure(it))}
+                    onStart = { _addTaskLiveData.postValue(CreationResource.Loading)},
+                    onSuccess = {_addTaskLiveData.postValue(CreationResource.Success(it))},
+                    onFailure = {_addTaskLiveData.postValue(CreationResource.Failure(it))}
                 )
         }
     }
