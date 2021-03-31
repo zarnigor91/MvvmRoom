@@ -1,6 +1,6 @@
 package uz.zn.taskalifteach.app.feature
 
-import android.content.Context
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -10,13 +10,12 @@ import com.example.alifteachtask.data.model.TaskEntity
 import uz.zn.taskalifteach.R
 import uz.zn.taskalifteach.databinding.ViewHolderTaskItemBinding
 
-class TaskAdapter(context: Context) :
+class TaskAdapter(val listenerAction: ListenerAction) :
     RecyclerView.Adapter<TaskAdapter.ViewHolder>(), Filterable {
     private var myList: MutableList<TaskEntity> = ArrayList()
-    private val inflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ViewHolderTaskItemBinding.inflate(LayoutInflater.from(parent.context)))
+        return ViewHolder(ViewHolderTaskItemBinding.inflate(LayoutInflater.from(parent.context)), listenerAction)
     }
 
     override fun getItemCount(): Int {
@@ -33,24 +32,29 @@ class TaskAdapter(context: Context) :
         this.notifyDataSetChanged()
     }
 
-    class ViewHolder(private val binding: ViewHolderTaskItemBinding) :
+    class ViewHolder(private val binding: ViewHolderTaskItemBinding, private val listenerAction: ListenerAction) :
         RecyclerView.ViewHolder(binding.root) {
         private var selectSubject: TaskEntity? = null
 
         fun onBind(newsItem: TaskEntity) {
             this.selectSubject = newsItem
-//
-//            itemView.apply {
-//                setOnClickListener { action.invoke(selectSubject!!) }
-            binding.tvName.text = newsItem.name
-            binding.tvDate.text = newsItem.data
-            if (newsItem.status==true){
-                 binding.imStatus.setImageResource(R.drawable.ic_switch_on)
-            }
-            else{
-                binding.imStatus.setImageResource(R.drawable.ic_switch_off)
-            }
 
+            itemView.apply {
+             binding.imEdit.setOnClickListener {
+                 listenerAction.onUpdate(selectSubject!!)
+             }
+                binding.imDelete.setOnClickListener {
+                    listenerAction.onDelete(selectSubject!!)
+                }
+
+                binding.tvName.text = newsItem.name
+                binding.tvDate.text = newsItem.data
+                if (newsItem.status == true) {
+                    binding.imStatus.setImageResource(R.drawable.ic_switch_on)
+                } else {
+                    binding.imStatus.setImageResource(R.drawable.ic_switch_off)
+                }
+            }
         }
 
     }
@@ -83,8 +87,18 @@ class TaskAdapter(context: Context) :
             }
         }
     }
+    interface ListenerAction{
+       fun onUpdate(taskEntity: TaskEntity)
+       fun onDelete(taskEntity: TaskEntity)
+    }
 
 }
+
+
+
+
+
+
 
 
 

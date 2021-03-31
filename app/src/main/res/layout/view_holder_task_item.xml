@@ -12,7 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="7dp"
-        android:layout_marginTop="7dp">
+        android:layout_marginTop="7dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        >
         <ImageView
             android:id="@+id/im_status"
             android:layout_width="50dp"

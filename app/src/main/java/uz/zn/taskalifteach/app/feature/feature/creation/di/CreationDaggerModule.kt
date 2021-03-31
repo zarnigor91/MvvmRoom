@@ -7,8 +7,8 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import uz.zn.taskalifteach.app.application.di.fragment.FragmentKey
 import uz.zn.taskalifteach.app.application.di.viewmodel.ViewModelKey
-import uz.zn.taskalifteach.app.feature.feature.creation.CreationFragment
-import uz.zn.taskalifteach.app.feature.feature.creation.CreationViewModel
+import uz.zn.taskalifteach.app.feature.feature.creation.CreationTaskFragment
+import uz.zn.taskalifteach.app.feature.feature.creation.CreationTaskViewModel
 
 @Module(includes = [CreationDaggerModule.Binder::class])
 class CreationDaggerModule {
@@ -18,12 +18,12 @@ class CreationDaggerModule {
 
         @Binds
         @IntoMap
-        @FragmentKey(CreationFragment::class)
-        fun creationFragment(fragment: CreationFragment): Fragment
+        @FragmentKey(CreationTaskFragment::class)
+        fun creationFragment(fragment: CreationTaskFragment): Fragment
 
         @Binds
         @IntoMap
-        @ViewModelKey(CreationViewModel::class)
-        fun creationViewModel(viewModel: CreationViewModel): ViewModel
+        @ViewModelKey(CreationTaskViewModel::class)
+        fun creationViewModel(viewModel: CreationTaskViewModel): ViewModel
     }
 }

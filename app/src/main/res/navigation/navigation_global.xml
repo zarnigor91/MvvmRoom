@@ -13,9 +13,20 @@
         <action
             android:id="@+id/action_mainRootFragment_to_creationFragment"
             app:destination="@id/creationFragment" />
+        <action
+            android:id="@+id/action_mainRootFragment_to_editTaskFragment"
+            app:destination="@id/editTaskFragment" />
     </fragment>
     <fragment
         android:id="@+id/creationFragment"
-        android:name="uz.zn.taskalifteach.app.feature.feature.creation.CreationFragment"
-        android:label="CreationFragment" />
+        android:name="uz.zn.taskalifteach.app.feature.feature.creation.CreationTaskFragment"
+        android:label="CreationFragment"
+        tools:layout="@layout/fragment_task_creation"
+        />
+    <fragment
+        android:id="@+id/editTaskFragment"
+        android:name="uz.zn.taskalifteach.app.feature.feature.edit.UpdateTaskFragment"
+        android:label="EditTaskFragment"
+        tools:layout="@layout/fragment_edit_task"
+        />
 </navigation>

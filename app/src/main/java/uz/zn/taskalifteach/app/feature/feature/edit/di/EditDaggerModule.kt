@@ -7,8 +7,8 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import uz.zn.taskalifteach.app.application.di.fragment.FragmentKey
 import uz.zn.taskalifteach.app.application.di.viewmodel.ViewModelKey
-import uz.zn.taskalifteach.app.feature.feature.edit.EditTaskFragment
-import uz.zn.taskalifteach.app.feature.feature.edit.EditTaskViewModel
+import uz.zn.taskalifteach.app.feature.feature.edit.UpdateTaskFragment
+import uz.zn.taskalifteach.app.feature.feature.edit.UpdateTaskViewModel
 
 @Module(includes = [EditDaggerModule.Binder::class])
 internal object EditDaggerModule{
@@ -17,13 +17,13 @@ internal object EditDaggerModule{
     interface Binder {
         @Binds
         @IntoMap
-        @FragmentKey(EditTaskFragment::class)
-        fun editTaskFragment(fragment: EditTaskFragment): Fragment
+        @FragmentKey(UpdateTaskFragment::class)
+        fun editTaskFragment(fragment: UpdateTaskFragment): Fragment
 
         @Binds
         @IntoMap
-        @ViewModelKey(EditTaskViewModel::class)
-        fun editTaskViewModel(viewModel: EditTaskViewModel): ViewModel
+        @ViewModelKey(UpdateTaskViewModel::class)
+        fun editTaskViewModel(viewModel: UpdateTaskViewModel): ViewModel
     }
 
 }

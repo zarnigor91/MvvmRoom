@@ -9,5 +9,5 @@ interface TaskRepository {
     fun getUndoneTask(): Flow<List<TaskEntity>>
     fun taskCreation(taks: TaskEntity): Flow<Long>
     fun taskDelete(taskEntity: TaskEntity): Flow<Unit>
-    fun taskEdit(id: Long, name: String): Flow<Int>
+    fun taskEdit(id: Long, name: String, date : String, status: Boolean): Flow<Int>
 }

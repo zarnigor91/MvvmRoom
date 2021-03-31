@@ -57,13 +57,13 @@ private var nameTask: String? = ""
             .flowOn(Dispatchers.IO)
     }
 
-    fun updateTasks(): Flow<Result<List<TaskEntity>>>{
-        return taskRepository.getAllTask().mapToFlowResult()
+    fun updateTasks(id:Long, name: String, date: String, status: Boolean): Flow<Result<Int>>{
+        return taskRepository.taskEdit(id,name,date,status).mapToFlowResult()
             .flowOn(Dispatchers.IO)
     }
 
-    fun deleteTasks(): Flow<Result<List<TaskEntity>>>{
-        return taskRepository.getAllTask().mapToFlowResult()
+    fun deleteTasks(taskEntity: TaskEntity): Flow<Result<Unit>>{
+        return taskRepository.taskDelete(taskEntity).mapToFlowResult()
             .flowOn(Dispatchers.IO)
     }
 
