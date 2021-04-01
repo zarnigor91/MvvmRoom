@@ -26,18 +26,16 @@ class MainRootFragment @Inject constructor(
 
         binding = FragmentMainRootBinding.bind(view)
 
-            Navigation.findNavController(requireActivity(), R.id.dashboard_nav_host_fragment).apply {
-                viewModel.setNavControl(this)
-                binding.bottomNavigationView.setupWithNavController(this)
-                binding.apply {
-                    toolbar.apply {
-                        inflateMenu(R.menu.menu_main_screen)
-                        setOnMenuItemClickListener(this@MainRootFragment)
-                    }
+        viewModel.setNavControl(findNavController())
+        Navigation.findNavController(requireActivity(), R.id.dashboard_nav_host_fragment).apply {
+            binding.bottomNavigationView.setupWithNavController(this)
+            binding.apply {
+                toolbar.apply {
+                    inflateMenu(R.menu.menu_main_screen)
+                    setOnMenuItemClickListener(this@MainRootFragment)
                 }
             }
-
-
+        }
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {

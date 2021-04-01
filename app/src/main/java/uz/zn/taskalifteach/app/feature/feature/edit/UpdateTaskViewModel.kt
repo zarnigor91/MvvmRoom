@@ -25,9 +25,9 @@ class UpdateTaskViewModel @Inject constructor(
         taskInteractor.setStatusTask(status)
 
 
-    fun  upDateTask(id:Long, name: String, date: String, status: Boolean) {
+    fun  upDateTask(name: String, date: String, status: Boolean) {
         viewModelScope.launch {
-            taskInteractor.updateTasks(id,name,date,status)
+            taskInteractor.updateTasks(name,date,status)
                 .launchWithState(
                     onStart = {_updateTaskLiveData.postValue(UpdateTaskResource.Loading)},
                     onSuccess = {_updateTaskLiveData.postValue(UpdateTaskResource.Success(it))},

@@ -57,8 +57,8 @@ private var nameTask: String? = ""
             .flowOn(Dispatchers.IO)
     }
 
-    fun updateTasks(id:Long, name: String, date: String, status: Boolean): Flow<Result<Int>>{
-        return taskRepository.taskEdit(id,name,date,status).mapToFlowResult()
+    fun updateTasks(name: String, date: String, status: Boolean): Flow<Result<Int>>{
+        return taskRepository.taskEdit(name,date,status).mapToFlowResult()
             .flowOn(Dispatchers.IO)
     }
 

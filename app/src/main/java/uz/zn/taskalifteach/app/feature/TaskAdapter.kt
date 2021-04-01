@@ -15,7 +15,10 @@ class TaskAdapter(val listenerAction: ListenerAction) :
     private var myList: MutableList<TaskEntity> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ViewHolderTaskItemBinding.inflate(LayoutInflater.from(parent.context)), listenerAction)
+        return ViewHolder(
+            ViewHolderTaskItemBinding.inflate(LayoutInflater.from(parent.context)),
+            listenerAction
+        )
     }
 
     override fun getItemCount(): Int {
@@ -32,7 +35,10 @@ class TaskAdapter(val listenerAction: ListenerAction) :
         this.notifyDataSetChanged()
     }
 
-    class ViewHolder(private val binding: ViewHolderTaskItemBinding, private val listenerAction: ListenerAction) :
+    class ViewHolder(
+        private val binding: ViewHolderTaskItemBinding,
+        private val listenerAction: ListenerAction
+    ) :
         RecyclerView.ViewHolder(binding.root) {
         private var selectSubject: TaskEntity? = null
 
@@ -40,15 +46,15 @@ class TaskAdapter(val listenerAction: ListenerAction) :
             this.selectSubject = newsItem
 
             itemView.apply {
-             binding.imEdit.setOnClickListener {
-                 listenerAction.onUpdate(selectSubject!!)
-             }
+                binding.imEdit.setOnClickListener {
+                    listenerAction.onUpdate(newsItem)
+                }
                 binding.imDelete.setOnClickListener {
-                    listenerAction.onDelete(selectSubject!!)
+                    listenerAction.onDelete(newsItem)
                 }
 
                 binding.tvName.text = newsItem.name
-                binding.tvDate.text =  newsItem.data
+                binding.tvDate.text = newsItem.data
                 if (newsItem.status == true) {
                     binding.imStatus.setImageResource(R.drawable.ic_switch_on)
                 } else {
@@ -87,11 +93,11 @@ class TaskAdapter(val listenerAction: ListenerAction) :
             }
         }
     }
-    interface ListenerAction{
-       fun onUpdate(taskEntity: TaskEntity)
-       fun onDelete(taskEntity: TaskEntity)
-    }
 
+    interface ListenerAction {
+        fun onUpdate(taskEntity: TaskEntity)
+        fun onDelete(taskEntity: TaskEntity)
+    }
 }
 
 

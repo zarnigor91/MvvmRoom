@@ -10,6 +10,7 @@ import uz.zn.taskalifteach.R
 import uz.zn.taskalifteach.app.application.di.viewmodel.ProviderViewModelFactory
 import uz.zn.taskalifteach.app.feature.feature.creation.CreationTaskResource
 import uz.zn.taskalifteach.app.feature.feature.creation.CreationTaskViewModel
+import uz.zn.taskalifteach.databinding.FragmentEditTaskBinding
 import uz.zn.taskalifteach.databinding.FragmentTaskCreationBinding
 import javax.inject.Inject
 
@@ -18,20 +19,19 @@ class UpdateTaskFragment @Inject constructor(
 ) : Fragment(R.layout.fragment_edit_task){
 
     private val viewModel: UpdateTaskViewModel by viewModels { viewModelFactory }
-    private lateinit var binding: FragmentTaskCreationBinding
+    private lateinit var binding: FragmentEditTaskBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentTaskCreationBinding.bind(view)
+        binding = FragmentEditTaskBinding.bind(view)
 
         observeCardList()
-        binding.btAdd.setOnClickListener {
+        binding.btUpdate.setOnClickListener {
             viewModel.setNameTask(binding.etName.text.toString())
             viewModel.setDateTask(binding.etDate.text.toString())
             viewModel.setStatusTask(true)
-            viewModel.upDateTask(0,binding.etName.text.toString(),binding.etDate.text.toString(),true )
+            viewModel.upDateTask(binding.etName.text.toString(),binding.etDate.text.toString(),true )
         }
-
     }
 
     private fun observeCardList() {

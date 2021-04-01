@@ -21,24 +21,20 @@
         android:id="@+id/creationFragment"
         android:name="uz.zn.taskalifteach.app.feature.feature.creation.CreationTaskFragment"
         android:label="CreationFragment"
-        tools:layout="@layout/fragment_task_creation"
-        />
+        tools:layout="@layout/fragment_task_creation" />
     <fragment
         android:id="@+id/editTaskFragment"
         android:name="uz.zn.taskalifteach.app.feature.feature.edit.UpdateTaskFragment"
         android:label="EditTaskFragment"
         tools:layout="@layout/fragment_edit_task">
-    <argument
-        android:name="name"
-        app:argType="string"
-        />
-    <argument
-        android:name="date"
-        app:argType="string"
-        />
-    <argument
-        android:name="status"
-        app:argType="boolean"
-        />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="date"
+            app:argType="string" />
+        <argument
+            android:name="status"
+            app:argType="boolean" />
     </fragment>
 </navigation>

@@ -4,10 +4,12 @@ import androidx.fragment.app.FragmentFactory
 
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import uz.zn.taskalifteach.app.application.di.fragment.ProviderFragmentFactory
+import uz.zn.taskalifteach.app.feature.feature.MainRootNavController
 
 
-@Module(includes = [GlobalDaggerModule.Binder::class])
+@Module(includes = [GlobalDaggerModule.Binder::class, GlobalDaggerModule.Providers::class])
 object GlobalDaggerModule {
 
     @Module
@@ -17,5 +19,16 @@ object GlobalDaggerModule {
         fun bindProviderFragmentFactory(
             factory: ProviderFragmentFactory
         ): FragmentFactory
+    }
+
+    @Module
+    object Providers {
+
+        @JvmStatic
+        @Provides
+        @GlobalScope
+        fun mainNavController(
+        ): MainRootNavController =
+            MainRootNavController()
     }
 }

@@ -10,7 +10,7 @@ import com.example.alifteachtask.data.model.TaskEntity
 import uz.zn.taskalifteach.R
 import uz.zn.taskalifteach.app.application.di.viewmodel.ProviderViewModelFactory
 import uz.zn.taskalifteach.app.feature.TaskAdapter
-import uz.zn.taskalifteach.app.feature.feature.DashboardNavController
+import uz.zn.taskalifteach.app.feature.feature.MainRootNavController
 import uz.zn.taskalifteach.databinding.FragmentAllTaskBinding
 import javax.inject.Inject
 
@@ -23,7 +23,7 @@ class AllTaskFragment @Inject constructor(
     private lateinit var taskAdapter: TaskAdapter
 
     @Inject
-    lateinit var routeController: DashboardNavController
+    lateinit var routeController: MainRootNavController
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -54,7 +54,7 @@ class AllTaskFragment @Inject constructor(
     }
 
     override fun onUpdate(taskEntity: TaskEntity) {
-        routeController.navigationUpdateTask(taskEntity.name!!, taskEntity.data!!, taskEntity.status!!)
+        viewModel.openTaskEditFragment(taskEntity)
         Toast.makeText(requireContext(), "UpdateTaskFragment",  Toast.LENGTH_SHORT).show()
     }
 

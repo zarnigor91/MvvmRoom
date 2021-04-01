@@ -7,13 +7,15 @@ import androidx.lifecycle.viewModelScope
 import com.example.alifteachtask.data.model.TaskEntity
 import kotlinx.coroutines.launch
 import uz.mayasoft.marta.wallet.data.utils.flow.launchWithState
-
+import uz.zn.taskalifteach.app.feature.MainRootFragmentDirections
+import uz.zn.taskalifteach.app.feature.feature.MainRootNavController
 import uz.zn.taskalifteach.doimain.TaskInteractor
 import javax.inject.Inject
 
 class AllTaskViewModel @Inject constructor(
+    private val mainRootNavController: MainRootNavController,
     private val taskInteractor: TaskInteractor
-) :ViewModel() {
+) : ViewModel() {
 
     private val _allTaskLiveData = MutableLiveData<AllTaskResource>()
     val taskAllLiveData: LiveData<AllTaskResource> = _allTaskLiveData
@@ -26,9 +28,9 @@ class AllTaskViewModel @Inject constructor(
         viewModelScope.launch {
             taskInteractor.deleteTasks(taskEntity)
                 .launchWithState(
-                    onStart = { _deleteTaskLiveData.postValue(TaskDeleteResource.Loading)},
-                    onSuccess = {_deleteTaskLiveData.postValue(TaskDeleteResource.Success(it))},
-                    onFailure = {_deleteTaskLiveData.postValue(TaskDeleteResource.Failure(it))}
+                    onStart = { _deleteTaskLiveData.postValue(TaskDeleteResource.Loading) },
+                    onSuccess = { _deleteTaskLiveData.postValue(TaskDeleteResource.Success(it)) },
+                    onFailure = { _deleteTaskLiveData.postValue(TaskDeleteResource.Failure(it)) }
                 )
         }
     }
@@ -37,19 +39,22 @@ class AllTaskViewModel @Inject constructor(
         viewModelScope.launch {
             taskInteractor.getAlltasks()
                 .launchWithState(
-                    onStart = { _allTaskLiveData.postValue(AllTaskResource.Loading)},
-                    onSuccess = {_allTaskLiveData.postValue(AllTaskResource.Success(it))},
-                    onFailure = {_allTaskLiveData.postValue(AllTaskResource.Failure(it))}
+                    onStart = { _allTaskLiveData.postValue(AllTaskResource.Loading) },
+                    onSuccess = { _allTaskLiveData.postValue(AllTaskResource.Success(it)) },
+                    onFailure = { _allTaskLiveData.postValue(AllTaskResource.Failure(it)) }
                 )
         }
     }
 
-//    fun openDeta(name: String, date: String, status: Boolean){
-//        routerCOntroller.navigateOpenDateils(name,date,status)
-//    }
-
-
-
-
-
+    fun openTaskEditFragment(taskEntity: TaskEntity) {
+        mainRootNavController.getInstance().withNavController {
+            navigate(
+                MainRootFragmentDirections.actionMainRootFragmentToEditTaskFragment(
+                        taskEntity.name ?: "",
+                        taskEntity.data ?: "",
+                        taskEntity.status ?: false
+                    )
+            )
+        }
+    }
 }

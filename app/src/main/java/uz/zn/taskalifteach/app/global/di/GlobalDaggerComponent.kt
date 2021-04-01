@@ -12,7 +12,6 @@ import uz.zn.taskalifteach.data.provider.RepositoryProvider
 )
 interface GlobalDaggerComponent : RepositoryProvider {
 
-
     fun inject(activity: GlobalActivity)
 
     @Component.Factory

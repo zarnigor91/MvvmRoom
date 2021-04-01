@@ -10,7 +10,7 @@ import uz.zn.taskalifteach.app.application.di.fragment.FragmentKey
 import uz.zn.taskalifteach.app.application.di.viewmodel.ViewModelKey
 import uz.zn.taskalifteach.app.feature.MainRootFragment
 import uz.zn.taskalifteach.app.feature.MainRootViewModel
-import uz.zn.taskalifteach.app.feature.feature.DashboardNavController
+import uz.zn.taskalifteach.app.feature.feature.MainRootNavController
 import uz.zn.taskalifteach.app.feature.feature.alltask.di.AllTaskDaggerModule
 import uz.zn.taskalifteach.app.feature.feature.completed.di.CompletedDaggerModule
 import uz.zn.taskalifteach.app.feature.feature.creation.di.CreationDaggerModule
@@ -43,12 +43,12 @@ object MainRootDaggerModule {
     @Module
     object Providers{
 
-        @JvmStatic
-        @Provides
-        @GlobalScope
-        fun routeController(
-        ) : DashboardNavController =
-            DashboardNavController()
+//        @JvmStatic
+//        @Provides
+//        @GlobalScope
+//        fun mainNavController(
+//        ) : MainRootNavController =
+//            MainRootNavController()
     }
 
     @Module(
