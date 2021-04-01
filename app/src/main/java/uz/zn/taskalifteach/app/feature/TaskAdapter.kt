@@ -1,6 +1,7 @@
 package uz.zn.taskalifteach.app.feature
 
 
+import android.app.DatePickerDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -9,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.alifteachtask.data.model.TaskEntity
 import uz.zn.taskalifteach.R
 import uz.zn.taskalifteach.databinding.ViewHolderTaskItemBinding
+import java.util.*
+import kotlin.collections.ArrayList
 
 class TaskAdapter(val listenerAction: ListenerAction) :
     RecyclerView.Adapter<TaskAdapter.ViewHolder>(), Filterable {
@@ -52,7 +55,6 @@ class TaskAdapter(val listenerAction: ListenerAction) :
                 binding.imDelete.setOnClickListener {
                     listenerAction.onDelete(newsItem)
                 }
-
                 binding.tvName.text = newsItem.name
                 binding.tvDate.text = newsItem.data
                 if (newsItem.status == true) {

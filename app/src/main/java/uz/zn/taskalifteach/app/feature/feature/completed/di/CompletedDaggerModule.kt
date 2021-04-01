@@ -20,12 +20,12 @@ internal object CompletedDaggerModule{
         @Binds
         @IntoMap
         @FragmentKey(CompletedFragment::class)
-        fun editTaskFragment(fragment: CompletedFragment): Fragment
+        fun completedTaskFragment(fragment: CompletedFragment): Fragment
 
         @Binds
         @IntoMap
         @ViewModelKey(CompletedViewModel::class)
-        fun editTaskViewModel(viewModel: CompletedViewModel): ViewModel
+        fun completedTaskViewModel(viewModel: CompletedViewModel): ViewModel
     }
 
 }

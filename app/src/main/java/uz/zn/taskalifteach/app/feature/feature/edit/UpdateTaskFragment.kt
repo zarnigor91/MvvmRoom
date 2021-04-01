@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import uz.zn.taskalifteach.R
 import uz.zn.taskalifteach.app.application.di.viewmodel.ProviderViewModelFactory
 import uz.zn.taskalifteach.app.feature.feature.creation.CreationTaskResource
@@ -20,17 +21,31 @@ class UpdateTaskFragment @Inject constructor(
 
     private val viewModel: UpdateTaskViewModel by viewModels { viewModelFactory }
     private lateinit var binding: FragmentEditTaskBinding
+    private val args : UpdateTaskFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEditTaskBinding.bind(view)
+        arguments.let {
+
+            binding.etName.setText(args.name)
+            binding.tvDate.text = args.date
+//            binding.checkbox.
+        }
 
         observeCardList()
         binding.btUpdate.setOnClickListener {
             viewModel.setNameTask(binding.etName.text.toString())
-            viewModel.setDateTask(binding.etDate.text.toString())
+            viewModel.setDateTask(binding.tvDate.text.toString())
             viewModel.setStatusTask(true)
-            viewModel.upDateTask(binding.etName.text.toString(),binding.etDate.text.toString(),true )
+            if (binding.checkbox.isChecked)
+            {
+                viewModel.upDateTask(binding.etName.text.toString(),binding.tvDate.text.toString(),true )
+            }
+            else{
+                viewModel.upDateTask(binding.etName.text.toString(),binding.tvDate.text.toString(),false )
+            }
+
         }
     }
 

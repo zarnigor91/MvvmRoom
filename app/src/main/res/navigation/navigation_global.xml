@@ -27,6 +27,7 @@
         android:name="uz.zn.taskalifteach.app.feature.feature.edit.UpdateTaskFragment"
         android:label="EditTaskFragment"
         tools:layout="@layout/fragment_edit_task">
+
         <argument
             android:name="name"
             app:argType="string" />

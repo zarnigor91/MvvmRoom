@@ -32,7 +32,7 @@ class AllTaskFragment @Inject constructor(
 
 
         taskAdapter = TaskAdapter(this)
-        binding.recyclerView.adapter = taskAdapter
+        binding.recyclerView.adapter  = taskAdapter
         observeAllTaskList()
         observeDeleteList()
         viewModel.getAllTaskList()
@@ -54,7 +54,7 @@ class AllTaskFragment @Inject constructor(
     }
 
     override fun onUpdate(taskEntity: TaskEntity) {
-        viewModel.openTaskEditFragment(taskEntity)
+       routeController.navController
         Toast.makeText(requireContext(), "UpdateTaskFragment",  Toast.LENGTH_SHORT).show()
     }
 

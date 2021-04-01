@@ -45,6 +45,7 @@
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 android:hint="name"
+
                 tools:text=""/>
             <TextView
                 android:id="@+id/tv_date"

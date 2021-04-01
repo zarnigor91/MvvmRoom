@@ -1,4 +1,4 @@
-package uz.zn.taskalifteach.app.feature.feature.completed
+package uz.zn.taskalifteach.app.feature.feature.undone
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,13 +14,13 @@ import uz.zn.taskalifteach.app.feature.feature.alltask.TaskDeleteResource
 import uz.zn.taskalifteach.doimain.TaskInteractor
 import javax.inject.Inject
 
-class CompletedViewModel @Inject constructor(
+class UndoneViewModel @Inject constructor(
     private val mainRootNavController: MainRootNavController,
     private val taskInteractor: TaskInteractor
 ) : ViewModel() {
 
-    private val _completedTaskLiveData = MutableLiveData<AllTaskResource>()
-    val completedTaskLiveData: LiveData<AllTaskResource> = _completedTaskLiveData
+    private val _allTaskLiveData = MutableLiveData<AllTaskResource>()
+    val taskAllLiveData: LiveData<AllTaskResource> = _allTaskLiveData
 
     private val _deleteTaskLiveData = MutableLiveData<TaskDeleteResource>()
     val deleteAllLiveData: LiveData<TaskDeleteResource> = _deleteTaskLiveData
@@ -37,13 +37,13 @@ class CompletedViewModel @Inject constructor(
         }
     }
 
-    fun getAllCompletedTaskList() {
+    fun getAllUndoneTaskList() {
         viewModelScope.launch {
-            taskInteractor.getCompletedTasks()
+            taskInteractor.getUndoneTasks()
                 .launchWithState(
-                    onStart = { _completedTaskLiveData.postValue(AllTaskResource.Loading) },
-                    onSuccess = {_completedTaskLiveData.postValue(AllTaskResource.Success(it)) },
-                    onFailure = { _completedTaskLiveData.postValue(AllTaskResource.Failure(it)) }
+                    onStart = { _allTaskLiveData.postValue(AllTaskResource.Loading) },
+                    onSuccess = { _allTaskLiveData.postValue(AllTaskResource.Success(it)) },
+                    onFailure = { _allTaskLiveData.postValue(AllTaskResource.Failure(it)) }
                 )
         }
     }

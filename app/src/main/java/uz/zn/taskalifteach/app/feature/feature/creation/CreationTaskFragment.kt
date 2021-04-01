@@ -1,5 +1,6 @@
 package uz.zn.taskalifteach.app.feature.feature.creation
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.fragment.app.viewModels
 import uz.zn.taskalifteach.R
 import uz.zn.taskalifteach.app.application.di.viewmodel.ProviderViewModelFactory
 import uz.zn.taskalifteach.databinding.FragmentTaskCreationBinding
+import java.util.*
 import javax.inject.Inject
 
 class CreationTaskFragment @Inject constructor(
@@ -22,12 +24,29 @@ class CreationTaskFragment @Inject constructor(
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentTaskCreationBinding.bind(view)
 
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+        binding.tvDate.setOnClickListener {
+            val dpd = DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                   binding.tvDate.setText("" + dayOfMonth + " " + month + ", " + year)
+            }, year, month, day)
+            dpd.show()
+        }
 
          observeCardList()
         binding.btAdd.setOnClickListener {
             viewModel.setNameTask(binding.etName.text.toString())
-            viewModel.setDateTask(binding.etDate.text.toString())
-            viewModel.setStatusTask(true)
+            viewModel.setDateTask(binding.tvDate.text.toString())
+            if (binding.checkbox.isChecked)
+            {
+                viewModel.setStatusTask(true)
+            }
+            else{
+                viewModel.setStatusTask(false)
+            }
+
             viewModel.insertTask()
         }
 

@@ -13,9 +13,6 @@
         android:layout_marginEnd="20dp"
         android:backgroundTint="#7858BA"
         android:hint="name"
-        android:textColorHint="#7858BA"
-        app:endIconTint="@color/design_default_color_primary_dark"
-        app:hintTextAppearance="@style/MyHintStyle"
         app:hintTextColor="#7858BA"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -31,57 +28,25 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tl_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:backgroundTint="#7858BA"
-        android:hint="date"
-        android:textColorHint="#7858BA"
-        app:endIconTint="@color/cardview_dark_background"
-        app:hintTextAppearance="@style/MyHintStyle"
-        app:hintTextColor="#7858BA"
-        app:layout_constraintTop_toBottomOf="@+id/tl_name">
+     <androidx.appcompat.widget.AppCompatTextView
+         android:id="@+id/tv_date"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         app:layout_constraintTop_toBottomOf="@+id/tl_name"
+         android:hint="select date"
+         android:textColorHint="@color/black"
+         android:layout_margin="20dp"
+         />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawablePadding="10dp"
-            android:imeOptions="actionDone"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textColor="@color/cardview_shadow_start_color" />
-    </com.google.android.material.textfield.TextInputLayout>
+<CheckBox
+    android:id="@+id/checkbox"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@+id/tv_date"
+    android:layout_margin="20dp"
+    app:layout_constraintStart_toStartOf="parent"
+    />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tl_status"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:backgroundTint="#7858BA"
-        android:hint="status"
-        android:textColorHint="#7858BA"
-        app:endIconTint="@color/cardview_dark_background"
-        app:hintTextAppearance="@style/MyHintStyle"
-        app:hintTextColor="#7858BA"
-        app:layout_constraintTop_toBottomOf="@+id/tl_date">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_status"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawablePadding="10dp"
-            android:imeOptions="actionDone"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textColor="@color/cardview_shadow_start_color" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_add"
