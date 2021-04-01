@@ -48,7 +48,7 @@ class TaskAdapter(val listenerAction: ListenerAction) :
                 }
 
                 binding.tvName.text = newsItem.name
-                binding.tvDate.text = newsItem.data
+                binding.tvDate.text =  newsItem.data
                 if (newsItem.status == true) {
                     binding.imStatus.setImageResource(R.drawable.ic_switch_on)
                 } else {

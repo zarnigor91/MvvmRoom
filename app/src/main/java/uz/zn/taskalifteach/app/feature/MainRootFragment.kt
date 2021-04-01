@@ -25,15 +25,19 @@ class MainRootFragment @Inject constructor(
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentMainRootBinding.bind(view)
-        val navController =
-            Navigation.findNavController(requireActivity(), R.id.dashboard_nav_host_fragment)
-        binding.apply {
-            bottomNavigationView.setupWithNavController(navController)
-            toolbar.apply {
-                inflateMenu(R.menu.menu_main_screen)
-                setOnMenuItemClickListener(this@MainRootFragment)
+
+            Navigation.findNavController(requireActivity(), R.id.dashboard_nav_host_fragment).apply {
+                viewModel.setNavControl(this)
+                binding.bottomNavigationView.setupWithNavController(this)
+                binding.apply {
+                    toolbar.apply {
+                        inflateMenu(R.menu.menu_main_screen)
+                        setOnMenuItemClickListener(this@MainRootFragment)
+                    }
+                }
             }
-        }
+
+
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {

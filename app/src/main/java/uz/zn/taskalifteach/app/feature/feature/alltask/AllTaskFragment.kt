@@ -6,11 +6,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.alifteachtask.data.model.TaskEntity
 import uz.zn.taskalifteach.R
 import uz.zn.taskalifteach.app.application.di.viewmodel.ProviderViewModelFactory
 import uz.zn.taskalifteach.app.feature.TaskAdapter
+import uz.zn.taskalifteach.app.feature.feature.DashboardNavController
 import uz.zn.taskalifteach.databinding.FragmentAllTaskBinding
 import javax.inject.Inject
 
@@ -22,9 +22,14 @@ class AllTaskFragment @Inject constructor(
     private lateinit var binding: FragmentAllTaskBinding
     private lateinit var taskAdapter: TaskAdapter
 
+    @Inject
+    lateinit var routeController: DashboardNavController
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentAllTaskBinding.bind(view)
+
+
 
         taskAdapter = TaskAdapter(this)
         binding.recyclerView.adapter = taskAdapter
@@ -47,13 +52,10 @@ class AllTaskFragment @Inject constructor(
             }
         }
     }
+
     override fun onUpdate(taskEntity: TaskEntity) {
-        val bundle = Bundle()
-//        bundle.putString("name", taskEntity.name)
-//        bundle.putString("date", taskEntity.data)
-//        bundle.putBoolean("status", taskEntity.status!!)
-        bundle.putAll(bundle)
-      findNavController().navigate(R.id.action_mainRootFragment_to_editTaskFragment)
+        routeController.navigationUpdateTask(taskEntity.name!!, taskEntity.data!!, taskEntity.status!!)
+        Toast.makeText(requireContext(), "UpdateTaskFragment",  Toast.LENGTH_SHORT).show()
     }
 
     override fun onDelete(taskEntity: TaskEntity) {

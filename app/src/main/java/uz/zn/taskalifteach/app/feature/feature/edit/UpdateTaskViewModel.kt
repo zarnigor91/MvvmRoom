@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import uz.mayasoft.marta.wallet.data.utils.flow.launchWithState
-import uz.zn.taskalifteach.app.feature.feature.creation.CreationTaskResource
 import uz.zn.taskalifteach.doimain.TaskInteractor
 import javax.inject.Inject
 
@@ -24,6 +23,7 @@ class UpdateTaskViewModel @Inject constructor(
 
     fun setStatusTask(status: Boolean) =
         taskInteractor.setStatusTask(status)
+
 
     fun  upDateTask(id:Long, name: String, date: String, status: Boolean) {
         viewModelScope.launch {

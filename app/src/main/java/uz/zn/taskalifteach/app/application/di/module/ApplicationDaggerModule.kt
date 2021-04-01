@@ -26,5 +26,10 @@ object ApplicationDaggerModule {
         fun provideRepositoryProvider(
             dataProvider: DataProvider
         ): RepositoryProvider = dataProvider.repositoryProvider
+
+//        @JvmStatic
+//        @Provides
+//        @Singleton
+//        fun router (): RouterCOntroller = RouterCOntroller()
     }
 }
