@@ -1,6 +1,7 @@
 package uz.zn.taskalifteach.doimain
 
 
+import android.util.Log
 import com.example.alifteachtask.data.model.TaskEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -61,9 +62,12 @@ private var nameTask: String? = ""
             .flowOn(Dispatchers.IO)
     }
 
-    fun updateTasks(name: String, date: String, status: Boolean): Flow<Result<Int>>{
-        return taskRepository.taskEdit(getNameTask(),getDateTask(),getStatusTask()).mapToFlowResult()
+    fun updateTasks(): Flow<Result<Int>>{
+        return taskRepository.taskEdit(TaskEntity(null,getNameTask(),getDateTask(),getStatusTask())).mapToFlowResult()
             .flowOn(Dispatchers.IO)
+            .onEach {
+                Log.wtf("UpdateFragmentName",""+getNameTask())
+            }
     }
 
     fun deleteTasks(taskEntity: TaskEntity): Flow<Result<Unit>>{

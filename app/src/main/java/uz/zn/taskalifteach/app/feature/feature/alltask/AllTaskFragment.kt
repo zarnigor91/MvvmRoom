@@ -28,9 +28,6 @@ class AllTaskFragment @Inject constructor(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentAllTaskBinding.bind(view)
-
-
-
         taskAdapter = TaskAdapter(this)
         binding.recyclerView.adapter  = taskAdapter
         observeAllTaskList()
@@ -38,6 +35,10 @@ class AllTaskFragment @Inject constructor(
         viewModel.getAllTaskList()
     }
 
+    override fun onStart() {
+        super.onStart()
+        observeAllTaskList()
+    }
     private fun observeAllTaskList() {
         viewModel.taskAllLiveData.observe(viewLifecycleOwner) { resource ->
             Log.d("card", "" + resource)
@@ -54,7 +55,7 @@ class AllTaskFragment @Inject constructor(
     }
 
     override fun onUpdate(taskEntity: TaskEntity) {
-       routeController.navController
+        viewModel.openTaskEditFragment(taskEntity)
         Toast.makeText(requireContext(), "UpdateTaskFragment",  Toast.LENGTH_SHORT).show()
     }
 

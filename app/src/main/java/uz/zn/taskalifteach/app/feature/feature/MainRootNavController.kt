@@ -24,15 +24,15 @@ class MainRootNavController private constructor(
     fun getInstance(): MainRootNavController {
         Log.wtf("MainRootNavController", "getInstance method called")
         if (instance == null)
-            throw IllegalStateException("instance ishlatishdan oldin uni init qilish kerak")
+            throw IllegalStateException()
         if (navController == null)
-            throw IllegalStateException("navController set qilinmagan")
+            throw IllegalStateException()
         return checkNotNull(instance)
     }
 
     inline fun withNavController(navControllerAction: NavController.() -> Unit) {
         if (navController == null)
-            throw IllegalStateException("navController set qilinmagan")
+            throw IllegalStateException()
         navControllerAction(checkNotNull(navController))
         Log.wtf("navController", "init method called")
     }

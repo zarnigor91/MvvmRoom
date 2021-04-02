@@ -41,16 +41,16 @@ class UpdateTaskFragment @Inject constructor(
         observeCardList()
         binding.btUpdate.setOnClickListener {
             viewModel.setNameTask(binding.etName.text.toString())
+            Log.wtf("UpdateFragmentName",""+binding.etName.text.toString())
             viewModel.setDateTask(binding.tvDate.text.toString())
-            viewModel.setStatusTask(true)
             if (binding.checkbox.isChecked)
             {
-                viewModel.upDateTask(binding.etName.text.toString(),binding.tvDate.text.toString(),true )
+                viewModel.setStatusTask(true)
             }
             else{
-                viewModel.upDateTask(binding.etName.text.toString(),binding.tvDate.text.toString(),false )
+                viewModel.setStatusTask(false)
             }
-
+               viewModel.upDateTask()
         }
     }
 
@@ -61,9 +61,12 @@ class UpdateTaskFragment @Inject constructor(
                UpdateTaskResource.Loading -> {
                 }
                 is UpdateTaskResource.Success -> {
+                    Log.wtf("Update from db", "true")
                     Toast.makeText(requireContext(), "update to db", Toast.LENGTH_SHORT).show()
                 }
                 is UpdateTaskResource.Failure -> {
+                    Log.wtf("Update from db", "false")
+                    Toast.makeText(requireContext(), "error to db", Toast.LENGTH_SHORT).show()
                 }
             }
         }

@@ -1,5 +1,6 @@
 package uz.zn.taskalifteach.app.feature.feature.edit
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,13 +26,18 @@ class UpdateTaskViewModel @Inject constructor(
         taskInteractor.setStatusTask(status)
 
 
-    fun  upDateTask(name: String, date: String, status: Boolean) {
+    fun  upDateTask() {
         viewModelScope.launch {
-            taskInteractor.updateTasks(name,date,status)
+            taskInteractor.updateTasks()
                 .launchWithState(
                     onStart = {_updateTaskLiveData.postValue(UpdateTaskResource.Loading)},
-                    onSuccess = {_updateTaskLiveData.postValue(UpdateTaskResource.Success(it))},
-                    onFailure = {_updateTaskLiveData.postValue(UpdateTaskResource.Failure(it))}
+                    onSuccess = {_updateTaskLiveData.postValue(UpdateTaskResource.Success(it))
+
+                        Log.wtf("Updateviemodel", "$it")
+                                },
+                    onFailure = {_updateTaskLiveData.postValue(UpdateTaskResource.Failure(it))
+                        Log.wtf("UpdateviemodelFea", "$it")
+                    }
                 )
         }
     }

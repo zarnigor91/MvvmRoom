@@ -30,7 +30,7 @@ class CreationTaskFragment @Inject constructor(
         val day = c.get(Calendar.DAY_OF_MONTH)
         binding.tvDate.setOnClickListener {
             val dpd = DatePickerDialog(requireContext(), DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-                   binding.tvDate.setText("" + dayOfMonth + " " + month + ", " + year)
+                   binding.tvDate.setText("" + dayOfMonth + "/" + month + "/" + year)
             }, year, month, day)
             dpd.show()
         }
