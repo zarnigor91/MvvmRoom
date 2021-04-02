@@ -34,5 +34,6 @@ class MainRootNavController private constructor(
         if (navController == null)
             throw IllegalStateException("navController set qilinmagan")
         navControllerAction(checkNotNull(navController))
+        Log.wtf("navController", "init method called")
     }
 }

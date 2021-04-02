@@ -42,7 +42,7 @@ class UndoneViewModel @Inject constructor(
             taskInteractor.getUndoneTasks()
                 .launchWithState(
                     onStart = { _allTaskLiveData.postValue(AllTaskResource.Loading) },
-                    onSuccess = { _allTaskLiveData.postValue(AllTaskResource.Success(it)) },
+                    onSuccess = { _allTaskLiveData.postValue(AllTaskResource.Success(it.filter { it.status==false })) },
                     onFailure = { _allTaskLiveData.postValue(AllTaskResource.Failure(it)) }
                 )
         }

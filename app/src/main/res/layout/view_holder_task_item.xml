@@ -21,9 +21,11 @@
         <ImageView
             android:id="@+id/im_status"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_weight="0.5"
-            android:src="@drawable/ic_switch_on" />
+
+            android:paddingTop="10dp"
+            android:src="@drawable/ic_check__1_" />
         <LinearLayout
             android:id="@+id/ln_tasks"
             android:layout_width="0dp"

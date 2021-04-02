@@ -47,15 +47,13 @@ private var nameTask: String? = ""
     fun getCompletedTasks(): Flow<Result<List<TaskEntity>>>{
         return taskRepository.getAllTask().mapToFlowResult()
             .flowOn(Dispatchers.IO)
+
     }
 
     fun getUndoneTasks(): Flow<Result<List<TaskEntity>>>{
         return taskRepository.getAllTask().mapToFlowResult()
             .flowOn(Dispatchers.IO)
-            .onEach {
-                var filterList =  it.filter {it.status == true}
 
-            }
     }
 
     fun addTasks(): Flow<Result<Long>>{
@@ -64,7 +62,7 @@ private var nameTask: String? = ""
     }
 
     fun updateTasks(name: String, date: String, status: Boolean): Flow<Result<Int>>{
-        return taskRepository.taskEdit(name,date,status).mapToFlowResult()
+        return taskRepository.taskEdit(getNameTask(),getDateTask(),getStatusTask()).mapToFlowResult()
             .flowOn(Dispatchers.IO)
     }
 

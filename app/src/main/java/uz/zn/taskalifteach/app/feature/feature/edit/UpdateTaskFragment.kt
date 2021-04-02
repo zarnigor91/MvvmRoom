@@ -30,7 +30,12 @@ class UpdateTaskFragment @Inject constructor(
 
             binding.etName.setText(args.name)
             binding.tvDate.text = args.date
-//            binding.checkbox.
+            if (args.status==true){
+                binding.checkbox.isChecked=true
+            }
+            else{
+                binding.checkbox.isChecked=false
+            }
         }
 
         observeCardList()
