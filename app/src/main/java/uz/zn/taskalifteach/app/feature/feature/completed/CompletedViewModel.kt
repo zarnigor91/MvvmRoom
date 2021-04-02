@@ -54,7 +54,8 @@ class CompletedViewModel @Inject constructor(
                 MainRootFragmentDirections.actionMainRootFragmentToEditTaskFragment(
                     taskEntity.name ?: "",
                     taskEntity.data ?: "",
-                    taskEntity.status ?: false
+                    taskEntity.status ?: false,
+                    taskEntity.id?: 0
                 )
             )
         }

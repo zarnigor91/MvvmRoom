@@ -37,5 +37,8 @@
         <argument
             android:name="status"
             app:argType="boolean" />
+        <argument
+            android:name="id"
+            app:argType="long" />
     </fragment>
 </navigation>

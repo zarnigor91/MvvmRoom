@@ -31,8 +31,15 @@ class TaskRepositoryImpl(
     }
 
     override fun taskEdit(taskEntity: TaskEntity): Flow<Int> {
-        return flow { emit(taskDao.updateTask(taskEntity)) }
+        return flow {
+            emit(
+                taskDao.updateTask(
+                    taskEntity.id ?: 0,
+                    taskEntity.name!!,
+                    taskEntity.data!!,
+                    taskEntity.status!!
+                )
+            )
+        }
     }
-
-
 }

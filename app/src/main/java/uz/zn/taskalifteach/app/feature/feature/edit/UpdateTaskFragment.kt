@@ -30,6 +30,7 @@ class UpdateTaskFragment @Inject constructor(
 
             binding.etName.setText(args.name)
             binding.tvDate.text = args.date
+            Log.wtf("taskId","${args.id}")
             if (args.status==true){
                 binding.checkbox.isChecked=true
             }
@@ -43,6 +44,8 @@ class UpdateTaskFragment @Inject constructor(
             viewModel.setNameTask(binding.etName.text.toString())
             Log.wtf("UpdateFragmentName",""+binding.etName.text.toString())
             viewModel.setDateTask(binding.tvDate.text.toString())
+            viewModel.setIdTask(args.id)
+
             if (binding.checkbox.isChecked)
             {
                 viewModel.setStatusTask(true)

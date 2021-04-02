@@ -16,6 +16,9 @@ interface TaskDao {
     @Delete
     fun delete(entity: TaskEntity)
 
-      @Update
-    fun updateTask(taskEntity: TaskEntity): Int
+//      @Update
+//    fun updateTask(taskEntity: TaskEntity): Int
+
+    @Query("UPDATE tasks SET name = :name, data= :date, status =:status WHERE id = :id")
+    fun updateTask(id:Long,name: String, date :String, status :Boolean): Int
 }

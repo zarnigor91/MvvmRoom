@@ -16,11 +16,15 @@ class UpdateTaskViewModel @Inject constructor(
     private val _updateTaskLiveData = MutableLiveData<UpdateTaskResource>()
     val updateTaskLiveData: LiveData<UpdateTaskResource> = _updateTaskLiveData
 
-    fun setNameTask(name: String) =
-        taskInteractor.setNameTask(name)
 
     fun setDateTask(date: String) =
         taskInteractor.setDateTask(date)
+
+    fun setIdTask(id: Long) =
+        taskInteractor.setIdTask(id)
+
+    fun setNameTask(name: String) =
+        taskInteractor.setNameTask(name)
 
     fun setStatusTask(status: Boolean) =
         taskInteractor.setStatusTask(status)
