@@ -22,7 +22,7 @@ class TaskRepositoryImpl(
         return taskDao.selectAllTask()
     }
 
-    override fun taskCreation(taks: TaskEntity): Flow<Long> {
+    override fun taskCreation(taks: List<TaskEntity>): Flow<Unit> {
         return flow { emit(taskDao.insert(taks)) }
     }
 
@@ -30,16 +30,16 @@ class TaskRepositoryImpl(
         return flow { emit(taskDao.delete(taskEntity)) }
     }
 
-    override fun taskEdit(taskEntity: TaskEntity): Flow<Int> {
-        return flow {
-            emit(
-                taskDao.updateTask(
-                    taskEntity.id ?: 0,
-                    taskEntity.name!!,
-                    taskEntity.data!!,
-                    taskEntity.status!!
-                )
-            )
-        }
-    }
+//    override fun taskEdit(taskEntity: TaskEntity): Flow<Int> {
+//        return flow {
+//            emit(
+//                taskDao.updateTask(
+//                    taskEntity.id ?: 0,
+//                    taskEntity.name!!,
+//                    taskEntity.data!!,
+//                    taskEntity.status!!
+//                )
+//            )
+//        }
+//    }
 }

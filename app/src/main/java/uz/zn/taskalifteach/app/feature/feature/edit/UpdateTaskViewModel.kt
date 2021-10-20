@@ -29,20 +29,20 @@ class UpdateTaskViewModel @Inject constructor(
     fun setStatusTask(status: Boolean) =
         taskInteractor.setStatusTask(status)
 
-
-    fun  upDateTask() {
-        viewModelScope.launch {
-            taskInteractor.updateTasks()
-                .launchWithState(
-                    onStart = {_updateTaskLiveData.postValue(UpdateTaskResource.Loading)},
-                    onSuccess = {_updateTaskLiveData.postValue(UpdateTaskResource.Success(it))
-
-                        Log.wtf("Updateviemodel", "$it")
-                                },
-                    onFailure = {_updateTaskLiveData.postValue(UpdateTaskResource.Failure(it))
-                        Log.wtf("UpdateviemodelFea", "$it")
-                    }
-                )
-        }
-    }
+//
+//    fun  upDateTask() {
+//        viewModelScope.launch {
+//            taskInteractor.updateTasks()
+//                .launchWithState(
+//                    onStart = {_updateTaskLiveData.postValue(UpdateTaskResource.Loading)},
+//                    onSuccess = {_updateTaskLiveData.postValue(UpdateTaskResource.Success(it))
+//
+//                        Log.wtf("Updateviemodel", "$it")
+//                                },
+//                    onFailure = {_updateTaskLiveData.postValue(UpdateTaskResource.Failure(it))
+//                        Log.wtf("UpdateviemodelFea", "$it")
+//                    }
+//                )
+//        }
+//    }
 }

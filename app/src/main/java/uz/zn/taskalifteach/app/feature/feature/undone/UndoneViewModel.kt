@@ -37,28 +37,28 @@ class UndoneViewModel @Inject constructor(
         }
     }
 
-    fun getAllUndoneTaskList() {
-        viewModelScope.launch {
-            taskInteractor.getUndoneTasks()
-                .launchWithState(
-                    onStart = { _allTaskLiveData.postValue(AllTaskResource.Loading) },
-                    onSuccess = { _allTaskLiveData.postValue(AllTaskResource.Success(it.filter { it.status==false })) },
-                    onFailure = { _allTaskLiveData.postValue(AllTaskResource.Failure(it)) }
-                )
-        }
-    }
+//    fun getAllUndoneTaskList() {
+//        viewModelScope.launch {
+//            taskInteractor.getUndoneTasks()
+//                .launchWithState(
+//                    onStart = { _allTaskLiveData.postValue(AllTaskResource.Loading) },
+//                    onSuccess = { _allTaskLiveData.postValue(AllTaskResource.Success(it.filter { it.status==false })) },
+//                    onFailure = { _allTaskLiveData.postValue(AllTaskResource.Failure(it)) }
+//                )
+//        }
+//    }
 
-    fun openTaskEditFragment(taskEntity: TaskEntity) {
-        mainRootNavController.getInstance().withNavController {
-            navigate(
-
-                MainRootFragmentDirections.actionMainRootFragmentToEditTaskFragment(
-                    taskEntity.name ?: "",
-                    taskEntity.data ?: "",
-                    taskEntity.status ?: false,
-                    taskEntity.id?: 0
-                )
-            )
-        }
-    }
+//    fun openTaskEditFragment(taskEntity: TaskEntity) {
+//        mainRootNavController.getInstance().withNavController {
+//            navigate(
+//
+//                MainRootFragmentDirections.actionMainRootFragmentToEditTaskFragment(
+//                    taskEntity.name ?: "",
+//                    taskEntity.data ?: "",
+//                    taskEntity.status ?: false,
+//                    taskEntity.id?: 0
+//                )
+//            )
+//        }
+//    }
 }

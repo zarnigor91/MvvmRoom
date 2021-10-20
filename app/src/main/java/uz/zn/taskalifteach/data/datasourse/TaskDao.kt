@@ -11,14 +11,14 @@ interface TaskDao {
     fun selectAllTask(): Flow<List<TaskEntity>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(entity: TaskEntity): Long
+    fun insert(entity: List<TaskEntity>)
 
     @Delete
     fun delete(entity: TaskEntity)
 
 //      @Update
 //    fun updateTask(taskEntity: TaskEntity): Int
-
-    @Query("UPDATE tasks SET name = :name, data= :date, status =:status WHERE id = :id")
-    fun updateTask(id:Long,name: String, date :String, status :Boolean): Int
+//
+//    @Query("UPDATE tasks SET name = :name, data= :date, status =:status WHERE id = :id")
+//    fun updateTask(id:Long,name: String, date :String, status :Boolean): Int
 }

@@ -24,14 +24,14 @@ class CreationTaskViewModel @Inject constructor(
     fun setStatusTask(status: Boolean) =
         taskInteractor.setStatusTask(status)
 
-    fun  insertTask() {
-        viewModelScope.launch {
-            taskInteractor.addTasks()
-                .launchWithState(
-                    onStart = { _addTaskLiveData.postValue(CreationTaskResource.Loading)},
-                    onSuccess = {_addTaskLiveData.postValue(CreationTaskResource.Success(it))},
-                    onFailure = {_addTaskLiveData.postValue(CreationTaskResource.Failure(it))}
-                )
-        }
-    }
+//    fun  insertTask() {
+//        viewModelScope.launch {
+//            taskInteractor.addTasks()
+//                .launchWithState(
+//                    onStart = { _addTaskLiveData.postValue(CreationTaskResource.Loading)},
+//                    onSuccess = {_addTaskLiveData.postValue(CreationTaskResource.Success(it))},
+//                    onFailure = {_addTaskLiveData.postValue(CreationTaskResource.Failure(it))}
+//                )
+//        }
+//    }
 }

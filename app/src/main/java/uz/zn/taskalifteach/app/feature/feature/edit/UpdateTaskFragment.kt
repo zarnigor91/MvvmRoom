@@ -53,7 +53,7 @@ class UpdateTaskFragment @Inject constructor(
             else{
                 viewModel.setStatusTask(false)
             }
-               viewModel.upDateTask()
+//               viewModel.upDateTask()
         }
     }
 

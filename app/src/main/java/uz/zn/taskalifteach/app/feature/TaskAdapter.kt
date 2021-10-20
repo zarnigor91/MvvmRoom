@@ -1,21 +1,21 @@
 package uz.zn.taskalifteach.app.feature
 
 
-import android.app.DatePickerDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
-import com.example.alifteachtask.data.model.TaskEntity
+import com.bumptech.glide.Glide
 import uz.zn.taskalifteach.R
+import uz.zn.taskalifteach.data.model.Data
 import uz.zn.taskalifteach.databinding.ViewHolderTaskItemBinding
-import java.util.*
+
 import kotlin.collections.ArrayList
 
 class TaskAdapter(val listenerAction: ListenerAction) :
     RecyclerView.Adapter<TaskAdapter.ViewHolder>(), Filterable {
-    private var myList: MutableList<TaskEntity> = ArrayList()
+    private var myList: MutableList<Data> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -32,7 +32,7 @@ class TaskAdapter(val listenerAction: ListenerAction) :
         holder.onBind(myList[position])
     }
 
-    fun updateTask(newList: List<TaskEntity>) {
+    fun updateTask(newList: List<Data>) {
         myList.clear()
         myList.addAll(newList)
         this.notifyDataSetChanged()
@@ -43,25 +43,30 @@ class TaskAdapter(val listenerAction: ListenerAction) :
         private val listenerAction: ListenerAction
     ) :
         RecyclerView.ViewHolder(binding.root) {
-        private var selectSubject: TaskEntity? = null
+        private var selectSubject: Data? = null
 
-        fun onBind(newsItem: TaskEntity) {
+        fun onBind(newsItem: Data) {
             this.selectSubject = newsItem
 
             itemView.apply {
-                binding.imEdit.setOnClickListener {
-                    listenerAction.onUpdate(newsItem)
-                }
-                binding.imDelete.setOnClickListener {
-                    listenerAction.onDelete(newsItem)
-                }
-                binding.tvName.text = newsItem.name
-                binding.tvDate.text = newsItem.data
-                if (newsItem.status == true) {
-                    binding.imStatus.setImageResource(R.drawable.ic_check__1_)
-                } else {
-                    binding.imStatus.setImageResource(R.drawable.ic_error)
-                }
+                Glide.with(itemView)
+                    .load(newsItem.icon)
+                    .centerCrop()
+                    .error(R.drawable.task)
+                    .into(binding.ivBookItemImage)
+//                binding.imEdit.setOnClickListener {
+//                    listenerAction.onUpdate(newsItem)
+//                }
+//                binding.imDelete.setOnClickListener {
+//                    listenerAction.onDelete(newsItem)
+//                }
+                binding.tvSourceName.text = newsItem.name
+                binding.tvEndDate.text = newsItem.endDate
+//                if (newsItem.status == true) {
+//                    binding.imStatus.setImageResource(R.drawable.ic_check__1_)
+//                } else {
+//                    binding.imStatus.setImageResource(R.drawable.ic_error)
+//                }
             }
         }
 
@@ -72,9 +77,9 @@ class TaskAdapter(val listenerAction: ListenerAction) :
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val charSearch = constraint.toString()
                 if (charSearch.isEmpty()) {
-                    myList = myList as ArrayList<TaskEntity>
+                    myList = myList as ArrayList<Data>
                 } else {
-                    val resultList = ArrayList<TaskEntity>()
+                    val resultList = ArrayList<Data>()
                     for (row in myList) {
                         if (row.name!!.toLowerCase()
                                 .contains(constraint.toString().toLowerCase())
@@ -90,15 +95,15 @@ class TaskAdapter(val listenerAction: ListenerAction) :
             }
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                myList = results?.values as ArrayList<TaskEntity>
+                myList = results?.values as ArrayList<Data>
                 notifyDataSetChanged()
             }
         }
     }
 
     interface ListenerAction {
-        fun onUpdate(taskEntity: TaskEntity)
-        fun onDelete(taskEntity: TaskEntity)
+        fun onUpdate(taskEntity: Data)
+        fun onDelete(taskEntity: Data)
     }
 }
 

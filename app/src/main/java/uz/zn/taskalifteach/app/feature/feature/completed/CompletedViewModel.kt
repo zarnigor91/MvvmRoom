@@ -37,27 +37,27 @@ class CompletedViewModel @Inject constructor(
         }
     }
 
-    fun getAllCompletedTaskList() {
-        viewModelScope.launch {
-            taskInteractor.getCompletedTasks()
-                .launchWithState(
-                    onStart = { _completedTaskLiveData.postValue(AllTaskResource.Loading) },
-                    onSuccess = {_completedTaskLiveData.postValue(AllTaskResource.Success(it.filter { it.status==true })) },
-                    onFailure = { _completedTaskLiveData.postValue(AllTaskResource.Failure(it)) }
-                )
-        }
-    }
+//    fun getAllCompletedTaskList() {
+//        viewModelScope.launch {
+//            taskInteractor.getCompletedTasks()
+//                .launchWithState(
+//                    onStart = { _completedTaskLiveData.postValue(AllTaskResource.Loading) },
+//                    onSuccess = {_completedTaskLiveData.postValue(AllTaskResource.Success(it.filter { it.status==true })) },
+//                    onFailure = { _completedTaskLiveData.postValue(AllTaskResource.Failure(it)) }
+//                )
+//        }
+//    }
 
-    fun openTaskEditFragment(taskEntity: TaskEntity) {
-        mainRootNavController.getInstance().withNavController {
-            navigate(
-                MainRootFragmentDirections.actionMainRootFragmentToEditTaskFragment(
-                    taskEntity.name ?: "",
-                    taskEntity.data ?: "",
-                    taskEntity.status ?: false,
-                    taskEntity.id?: 0
-                )
-            )
-        }
-    }
+//    fun openTaskEditFragment(taskEntity: TaskEntity) {
+//        mainRootNavController.getInstance().withNavController {
+//            navigate(
+//                MainRootFragmentDirections.actionMainRootFragmentToEditTaskFragment(
+//                    taskEntity.name ?: "",
+//                    taskEntity.data ?: "",
+//                    taskEntity.status ?: false,
+//                    taskEntity.id?: 0
+//                )
+//            )
+//        }
+//    }
 }

@@ -1,5 +1,6 @@
 package uz.zn.taskalifteach.app.feature.feature.alltask
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -37,25 +38,32 @@ class AllTaskViewModel @Inject constructor(
 
     fun getAllTaskList() {
         viewModelScope.launch {
-            taskInteractor.getAlltasks()
+            taskInteractor.getAllOnlineTasks()
                 .launchWithState(
-                    onStart = { _allTaskLiveData.postValue(AllTaskResource.Loading) },
-                    onSuccess = { _allTaskLiveData.postValue(AllTaskResource.Success(it)) },
-                    onFailure = { _allTaskLiveData.postValue(AllTaskResource.Failure(it)) }
+                    onStart = { _allTaskLiveData.postValue(AllTaskResource.Loading)
+
+                        Log.d("request","")
+                              },
+                    onSuccess = { _allTaskLiveData.postValue(AllTaskResource.Success(it))
+                                Log.wtf("request","$it")
+                                },
+                    onFailure = { _allTaskLiveData.postValue(AllTaskResource.Failure(it))
+                        Log.wtf("xato","")
+                    }
                 )
         }
     }
 
-    fun openTaskEditFragment(taskEntity: TaskEntity) {
-        mainRootNavController.getInstance().withNavController {
-            navigate(
-                MainRootFragmentDirections.actionMainRootFragmentToEditTaskFragment(
-                        taskEntity.name ?: "",
-                        taskEntity.data ?: "",
-                        taskEntity.status ?: false,
-                    taskEntity.id?: 0
-                    )
-            )
-        }
-    }
+//    fun openTaskEditFragment(taskEntity: TaskEntity) {
+//        mainRootNavController.getInstance().withNavController {
+//            navigate(
+//                MainRootFragmentDirections.actionMainRootFragmentToEditTaskFragment(
+//                        taskEntity.name ?: "",
+//                        taskEntity.data ?: "",
+//                        taskEntity.icon,
+//                    taskEntity.bookId?: 0
+//                    )
+//            )
+//        }
+//    }
 }

@@ -12,7 +12,7 @@ import uz.zn.taskalifteach.app.feature.feature.alltask.AllTaskViewModel
 
 
 @Module(includes = [AllTaskDaggerModule.Binder::class])
-internal object AllTaskDaggerModule {
+ object AllTaskDaggerModule {
 
     @Module
     interface Binder {

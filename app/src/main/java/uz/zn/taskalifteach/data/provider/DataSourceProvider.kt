@@ -3,12 +3,10 @@ package uz.zn.taskalifteach.data.provider
 import android.content.Context
 import uz.zn.taskalifteach.data.datasourse.provider.DatabaseProvider
 import uz.zn.taskalifteach.data.datasourse.provider.DatabaseProviderImpl
+import uz.zn.taskalifteach.data.network.RestProvider
 
-internal class DataSourceProvider(
-    private val context: Context
-    ) {
+interface DataSourceProvider {
 
-    val dataBaseProvider : DatabaseProvider by lazy {
-        DatabaseProviderImpl(context)
-    }
+    val restProvider: RestProvider
+
 }

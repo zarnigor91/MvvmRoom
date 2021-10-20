@@ -4,7 +4,7 @@ import android.content.Context
 import uz.zn.taskalifteach.data.datasourse.TaskDatabase
 import uz.zn.taskalifteach.data.datasourse.TaskDao
 
-internal class DatabaseProviderImpl(context: Context) : DatabaseProvider {
+ class DatabaseProviderImpl(context: Context) : DatabaseProvider {
 
     private val taskDatabase: TaskDatabase by lazy {
         TaskDatabase.getAppDatabase(context)

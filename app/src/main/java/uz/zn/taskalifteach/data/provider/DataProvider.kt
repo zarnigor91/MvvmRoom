@@ -2,18 +2,24 @@ package uz.zn.taskalifteach.data.provider
 
 import android.content.Context
 import uz.zn.taskalifteach.data.datasourse.provider.DatabaseProvider
+import uz.zn.taskalifteach.data.datasourse.provider.DatabaseProviderImpl
 
 class DataProvider(context: Context) {
+
     private val dataSourceProvider by lazy {
-        DataSourceProvider(context = context)
+        DataSourceProviderImpl(context)
     }
+
+    private val databaseProvider by lazy {
+        DatabaseProviderImpl(context = context)
+    }
+
 
     val repositoryProvider: RepositoryProvider by lazy {
-        val databaseProvider: DatabaseProvider =
-            dataSourceProvider.dataBaseProvider
-
-        return@lazy RepositoryProviderImpl(
-            taskDao = databaseProvider.taskDao
+        RepositoryProviderImpl(
+            taskDao = databaseProvider.taskDao,
+            postApi = dataSourceProvider.restProvider.postApi
         )
     }
+
 }

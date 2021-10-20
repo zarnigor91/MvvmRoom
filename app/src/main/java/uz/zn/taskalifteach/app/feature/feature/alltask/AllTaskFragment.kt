@@ -11,6 +11,7 @@ import uz.zn.taskalifteach.R
 import uz.zn.taskalifteach.app.application.di.viewmodel.ProviderViewModelFactory
 import uz.zn.taskalifteach.app.feature.TaskAdapter
 import uz.zn.taskalifteach.app.feature.feature.MainRootNavController
+import uz.zn.taskalifteach.data.model.Data
 import uz.zn.taskalifteach.databinding.FragmentAllTaskBinding
 import javax.inject.Inject
 
@@ -54,14 +55,14 @@ class AllTaskFragment @Inject constructor(
         }
     }
 
-    override fun onUpdate(taskEntity: TaskEntity) {
-        viewModel.openTaskEditFragment(taskEntity)
-        Toast.makeText(requireContext(), "UpdateTaskFragment",  Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onDelete(taskEntity: TaskEntity) {
-       viewModel.deleteTask(taskEntity)
-    }
+//    override fun onUpdate(taskEntity: TaskEntity) {
+//        viewModel.openTaskEditFragment(taskEntity)
+//        Toast.makeText(requireContext(), "UpdateTaskFragment",  Toast.LENGTH_SHORT).show()
+//    }
+//
+//    override fun onDelete(taskEntity: TaskEntity) {
+//       viewModel.deleteTask(taskEntity)
+//    }
 
     private fun observeDeleteList() {
         viewModel.taskAllLiveData.observe(viewLifecycleOwner) { resource ->
@@ -76,6 +77,14 @@ class AllTaskFragment @Inject constructor(
                 }
             }
         }
+    }
+
+    override fun onUpdate(taskEntity: Data) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDelete(taskEntity: Data) {
+        TODO("Not yet implemented")
     }
 
 

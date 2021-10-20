@@ -14,6 +14,7 @@ import uz.zn.taskalifteach.app.feature.feature.MainRootNavController
 import uz.zn.taskalifteach.app.feature.feature.alltask.AllTaskResource
 import uz.zn.taskalifteach.app.feature.feature.alltask.AllTaskViewModel
 import uz.zn.taskalifteach.app.feature.feature.alltask.TaskDeleteResource
+import uz.zn.taskalifteach.data.model.Data
 import uz.zn.taskalifteach.databinding.FragmentAllTaskBinding
 import javax.inject.Inject
 
@@ -38,7 +39,7 @@ class CompletedFragment @Inject constructor(
         binding.recyclerView.adapter = taskAdapter
         observeAllTaskList()
         observeDeleteList()
-        viewModel.getAllCompletedTaskList()
+//        viewModel.getAllCompletedTaskList()
     }
 
     private fun observeAllTaskList() {
@@ -56,14 +57,14 @@ class CompletedFragment @Inject constructor(
         }
     }
 
-    override fun onUpdate(taskEntity: TaskEntity) {
-        viewModel.openTaskEditFragment(taskEntity)
-        Toast.makeText(requireContext(), "UpdateTaskFragment",  Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onDelete(taskEntity: TaskEntity) {
-        viewModel.deleteTask(taskEntity)
-    }
+//    override fun onUpdate(taskEntity: TaskEntity) {
+//        viewModel.openTaskEditFragment(taskEntity)
+//        Toast.makeText(requireContext(), "UpdateTaskFragment",  Toast.LENGTH_SHORT).show()
+//    }
+//
+//    override fun onDelete(taskEntity: TaskEntity) {
+//        viewModel.deleteTask(taskEntity)
+//    }
 
     private fun observeDeleteList() {
         viewModel.deleteAllLiveData.observe(viewLifecycleOwner) { resource ->
@@ -78,6 +79,14 @@ class CompletedFragment @Inject constructor(
                 }
             }
         }
+    }
+
+    override fun onUpdate(taskEntity: Data) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDelete(taskEntity: Data) {
+        TODO("Not yet implemented")
     }
 
 

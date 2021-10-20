@@ -47,7 +47,7 @@ class CreationTaskFragment @Inject constructor(
                 viewModel.setStatusTask(false)
             }
 
-            viewModel.insertTask()
+//            viewModel.insertTask()
         }
 
     }
