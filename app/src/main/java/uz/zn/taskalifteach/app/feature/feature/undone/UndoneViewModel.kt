@@ -26,39 +26,4 @@ class UndoneViewModel @Inject constructor(
     val deleteAllLiveData: LiveData<TaskDeleteResource> = _deleteTaskLiveData
 
 
-    fun deleteTask(taskEntity: TaskEntity) {
-        viewModelScope.launch {
-            taskInteractor.deleteTasks(taskEntity)
-                .launchWithState(
-                    onStart = { _deleteTaskLiveData.postValue(TaskDeleteResource.Loading) },
-                    onSuccess = { _deleteTaskLiveData.postValue(TaskDeleteResource.Success(it)) },
-                    onFailure = { _deleteTaskLiveData.postValue(TaskDeleteResource.Failure(it)) }
-                )
-        }
-    }
-
-//    fun getAllUndoneTaskList() {
-//        viewModelScope.launch {
-//            taskInteractor.getUndoneTasks()
-//                .launchWithState(
-//                    onStart = { _allTaskLiveData.postValue(AllTaskResource.Loading) },
-//                    onSuccess = { _allTaskLiveData.postValue(AllTaskResource.Success(it.filter { it.status==false })) },
-//                    onFailure = { _allTaskLiveData.postValue(AllTaskResource.Failure(it)) }
-//                )
-//        }
-//    }
-
-//    fun openTaskEditFragment(taskEntity: TaskEntity) {
-//        mainRootNavController.getInstance().withNavController {
-//            navigate(
-//
-//                MainRootFragmentDirections.actionMainRootFragmentToEditTaskFragment(
-//                    taskEntity.name ?: "",
-//                    taskEntity.data ?: "",
-//                    taskEntity.status ?: false,
-//                    taskEntity.id?: 0
-//                )
-//            )
-//        }
-//    }
 }

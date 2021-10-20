@@ -13,8 +13,8 @@ import uz.zn.taskalifteach.databinding.ViewHolderTaskItemBinding
 
 import kotlin.collections.ArrayList
 
-class TaskAdapter(val listenerAction: ListenerAction) :
-    RecyclerView.Adapter<TaskAdapter.ViewHolder>(), Filterable {
+class GuideBookAdapter(val listenerAction: ListenerAction) :
+    RecyclerView.Adapter<GuideBookAdapter.ViewHolder>(), Filterable {
     private var myList: MutableList<Data> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -49,11 +49,11 @@ class TaskAdapter(val listenerAction: ListenerAction) :
             this.selectSubject = newsItem
 
             itemView.apply {
-                Glide.with(itemView)
-                    .load(newsItem.icon)
-                    .centerCrop()
-                    .error(R.drawable.task)
-                    .into(binding.ivBookItemImage)
+//                Glide.with(itemView)
+//                    .load(newsItem.icon)
+//                    .centerCrop()
+//                    .error(R.drawable.task)
+//                    .into(binding.ivBookItemImage)
 //                binding.imEdit.setOnClickListener {
 //                    listenerAction.onUpdate(newsItem)
 //                }

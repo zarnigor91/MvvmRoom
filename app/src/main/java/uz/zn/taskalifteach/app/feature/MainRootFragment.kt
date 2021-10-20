@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 class MainRootFragment @Inject constructor(
     viewModelFactory: ProviderViewModelFactory
-) : Fragment(R.layout.fragment_main_root), Toolbar.OnMenuItemClickListener {
+) : Fragment(R.layout.fragment_main_root) {
 
     private val viewModel: MainRootViewModel by viewModels { viewModelFactory }
     private lateinit var binding: FragmentMainRootBinding
@@ -32,19 +32,19 @@ class MainRootFragment @Inject constructor(
             binding.apply {
                 toolbar.apply {
                     inflateMenu(R.menu.menu_main_screen)
-                    setOnMenuItemClickListener(this@MainRootFragment)
+//                    setOnMenuItemClickListener(this@MainRootFragment)
                 }
             }
         }
     }
 
-    override fun onMenuItemClick(item: MenuItem?): Boolean {
-        return when (item?.itemId) {
-            R.id.action_add -> {
-                findNavController().navigate(R.id.action_mainRootFragment_to_creationFragment)
-                true
-            }
-            else -> false
-        }
-    }
+//    override fun onMenuItemClick(item: MenuItem?): Boolean {
+//        return when (item?.itemId) {
+//            R.id.action_add -> {
+//                findNavController().navigate(R.id.action_mainRootFragment_to_creationFragment)
+//                true
+//            }
+//            else -> false
+//        }
+//    }
 }

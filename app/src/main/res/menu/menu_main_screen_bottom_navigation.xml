@@ -6,10 +6,10 @@
         android:title="All" />
     <item
         android:id="@+id/main_completed_tasks_fragment"
-        android:icon="@drawable/ic_checklist"
-        android:title="Completed" />
+        android:icon="@drawable/ic_baseline_favorite_border_24"
+        android:title="favorite" />
     <item
         android:id="@+id/main_uncompleted_tasks_fragment"
         android:icon="@drawable/ic_check_list"
-        android:title="Undone" />
+        android:title="news" />
 </menu>

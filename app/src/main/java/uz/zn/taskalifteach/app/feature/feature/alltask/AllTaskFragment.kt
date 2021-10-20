@@ -6,31 +6,31 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.alifteachtask.data.model.TaskEntity
 import uz.zn.taskalifteach.R
 import uz.zn.taskalifteach.app.application.di.viewmodel.ProviderViewModelFactory
-import uz.zn.taskalifteach.app.feature.TaskAdapter
+import uz.zn.taskalifteach.app.feature.GuideBookAdapter
 import uz.zn.taskalifteach.app.feature.feature.MainRootNavController
 import uz.zn.taskalifteach.data.model.Data
 import uz.zn.taskalifteach.databinding.FragmentAllTaskBinding
+import uz.zn.taskalifteach.databinding.FragmentDashboardBinding
 import javax.inject.Inject
 
 class AllTaskFragment @Inject constructor(
     viewModelFactory: ProviderViewModelFactory
-) : Fragment(R.layout.fragment_all_task), TaskAdapter.ListenerAction {
+) : Fragment(R.layout.fragment_dashboard), GuideBookAdapter.ListenerAction {
 
     private val viewModel: AllTaskViewModel by viewModels { viewModelFactory }
-    private lateinit var binding: FragmentAllTaskBinding
-    private lateinit var taskAdapter: TaskAdapter
+    private lateinit var binding: FragmentDashboardBinding
+    private lateinit var taskAdapter: GuideBookAdapter
 
     @Inject
     lateinit var routeController: MainRootNavController
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentAllTaskBinding.bind(view)
-        taskAdapter = TaskAdapter(this)
-        binding.recyclerView.adapter  = taskAdapter
+        binding = FragmentDashboardBinding.bind(view)
+        taskAdapter = GuideBookAdapter(this)
+        binding.rvBook.adapter  = taskAdapter
         observeAllTaskList()
         observeDeleteList()
         viewModel.getAllTaskList()
@@ -55,14 +55,6 @@ class AllTaskFragment @Inject constructor(
         }
     }
 
-//    override fun onUpdate(taskEntity: TaskEntity) {
-//        viewModel.openTaskEditFragment(taskEntity)
-//        Toast.makeText(requireContext(), "UpdateTaskFragment",  Toast.LENGTH_SHORT).show()
-//    }
-//
-//    override fun onDelete(taskEntity: TaskEntity) {
-//       viewModel.deleteTask(taskEntity)
-//    }
 
     private fun observeDeleteList() {
         viewModel.taskAllLiveData.observe(viewLifecycleOwner) { resource ->

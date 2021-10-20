@@ -9,8 +9,6 @@ import uz.zn.taskalifteach.app.application.di.fragment.FragmentKey
 import uz.zn.taskalifteach.app.application.di.viewmodel.ViewModelKey
 import uz.zn.taskalifteach.app.feature.feature.completed.CompletedFragment
 import uz.zn.taskalifteach.app.feature.feature.completed.CompletedViewModel
-import uz.zn.taskalifteach.app.feature.feature.edit.UpdateTaskFragment
-import uz.zn.taskalifteach.app.feature.feature.edit.UpdateTaskViewModel
 
 @Module(includes = [CompletedDaggerModule.Binder::class])
 internal object CompletedDaggerModule{
