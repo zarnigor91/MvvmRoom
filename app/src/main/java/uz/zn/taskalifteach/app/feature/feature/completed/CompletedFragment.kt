@@ -34,7 +34,7 @@ class CompletedFragment @Inject constructor(
 
 
         taskAdapter = GuideBookAdapter(this)
-        binding.recyclerView.adapter = taskAdapter
+        binding.rvBook.adapter = taskAdapter
         observeAllTaskList()
         observeDeleteList()
 

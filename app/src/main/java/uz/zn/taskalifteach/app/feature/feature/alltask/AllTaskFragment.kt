@@ -6,13 +6,14 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import uz.zn.taskalifteach.R
 import uz.zn.taskalifteach.app.application.di.viewmodel.ProviderViewModelFactory
 import uz.zn.taskalifteach.app.feature.GuideBookAdapter
 import uz.zn.taskalifteach.app.feature.feature.MainRootNavController
 import uz.zn.taskalifteach.data.model.Data
-import uz.zn.taskalifteach.databinding.FragmentAllTaskBinding
 import uz.zn.taskalifteach.databinding.FragmentDashboardBinding
+
 import javax.inject.Inject
 
 class AllTaskFragment @Inject constructor(
@@ -30,6 +31,8 @@ class AllTaskFragment @Inject constructor(
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentDashboardBinding.bind(view)
         taskAdapter = GuideBookAdapter(this)
+        binding.rvBook.layoutManager =
+            GridLayoutManager(requireContext(), 1, GridLayoutManager.VERTICAL, false)
         binding.rvBook.adapter  = taskAdapter
         observeAllTaskList()
         observeDeleteList()

@@ -6,10 +6,8 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import uz.zn.taskalifteach.R
 import uz.zn.taskalifteach.data.model.Data
-import uz.zn.taskalifteach.databinding.ViewHolderTaskItemBinding
+import uz.zn.taskalifteach.databinding.ItemNewsListReadBinding
 
 import kotlin.collections.ArrayList
 
@@ -19,7 +17,7 @@ class GuideBookAdapter(val listenerAction: ListenerAction) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            ViewHolderTaskItemBinding.inflate(LayoutInflater.from(parent.context)),
+            ItemNewsListReadBinding.inflate(LayoutInflater.from(parent.context)),
             listenerAction
         )
     }
@@ -39,7 +37,7 @@ class GuideBookAdapter(val listenerAction: ListenerAction) :
     }
 
     class ViewHolder(
-        private val binding: ViewHolderTaskItemBinding,
+        private val binding:  ItemNewsListReadBinding,
         private val listenerAction: ListenerAction
     ) :
         RecyclerView.ViewHolder(binding.root) {
